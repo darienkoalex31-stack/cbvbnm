@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grazie! — Il Dono delle Note</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+:root{--bg:#FBF6EF;--ink:#2E2340;--ink-2:#4A3F5C;--line:#EADFD6;--accent:#D2553F;--plum:#4B2F63;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 'DM Sans',system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px 18px}
+main{max-width:560px;text-align:center}
+.icon{font-size:56px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,7vw,42px);line-height:1.1;margin:10px 0 14px}
+h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+p{color:var(--ink-2)}
+ol{text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 20px 20px 40px;display:grid;gap:8px}
+.code{display:inline-block;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:4px 12px;font-weight:700}
+a{color:var(--plum)}
+</style>
+</head>
+<body>
+<main>
+  <div class="icon">🎶</div>
+  <h1>Grazie! La sua canzone <em>sta per nascere</em></h1>
+  <p>Abbiamo ricevuto il tuo ordine. Ecco cosa succede adesso:</p>
+  <ol>
+    <li>Entro 24 ore ti mandiamo via email il <b>testo da approvare</b>.</li>
+    <li>Una volta approvato, lo trasformiamo in musica.</li>
+    <li>Ricevi la canzone pronta da regalare, nei tempi del pacchetto scelto.</li>
+  </ol>
+  <p id="codeLine" hidden>Il tuo codice ordine: <span class="code" id="code"></span></p>
+  <p>Hai un dubbio o vuoi aggiungere un dettaglio? Scrivici a <a id="mail" href="mailto:ciao@ildonodellenote.it">ciao@ildonodellenote.it</a></p>
+</main>
+<script>
+(function(){
+  var C = window.DDN_CONFIG || {};
+  var get = function(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } };
+  if (C.contactEmail) { var m = document.getElementById('mail'); m.href = 'mailto:' + C.contactEmail; m.textContent = C.contactEmail; }
+  var order = get('ddn_order');
+  if (order && order.leadId) { document.getElementById('code').textContent = order.leadId; document.getElementById('codeLine').hidden = false; }
+  // Evento Purchase: solo con consenso cookie e una sola volta per ordine
+  if (C.pixelId && get('ddn_consent') === 'yes' && order && !order.tracked) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', C.pixelId);
+    fbq('track', 'PageView');
+    fbq('track', 'Purchase', {value: order.value, currency: 'EUR'}, {eventID: order.leadId});
+    order.tracked = true;
+    try { localStorage.setItem('ddn_order', JSON.stringify(order)); } catch(e){}
+  }
+})();
+</script>
+</body>
+</html>
