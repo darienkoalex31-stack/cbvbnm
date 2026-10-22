@@ -21,10 +21,14 @@ window.DDN_CONFIG = {
   // Payment Link di Stripe (o altro checkout) per ciascun pacchetto.
   // Al link vengono aggiunti client_reference_id (codice lead) e prefilled_email.
   // Su Stripe imposta come pagina di conferma: https://ildonodellenote.it/grazie.html
+  // Servono 6 link: i 3 pacchetti, con e senza consegna prioritaria in 48 ore (+5 €).
   paymentLinks: {
-    base: '',
-    video: '',
-    completo: ''
+    uno: '',            // 1 canzone, 25 €
+    due: '',            // 2 canzoni, 35 €
+    tre: '',            // 3 canzoni, 49 €
+    uno_express: '',    // 1 canzone + 48 ore, 30 €
+    due_express: '',    // 2 canzoni + 48 ore, 40 €
+    tre_express: ''     // 3 canzoni + 48 ore, 54 €
   },
 
   contactEmail: 'ciao@ildonodellenote.it'

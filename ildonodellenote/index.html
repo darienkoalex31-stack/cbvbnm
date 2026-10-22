@@ -260,6 +260,13 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 .pkg ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px;font-size:14.5px;color:var(--ink-2)}
 .pkg li{display:flex;gap:8px}.pkg li::before{content:"✓";color:var(--ok);font-weight:700}
 .pkg .badge{position:absolute;top:-11px;left:18px;background:var(--plum);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pkg-price s{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--muted);margin-right:8px}
+.pkg-save{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;padding-left:32px;font-size:13.5px;color:var(--muted)}
+.pkg-save span{background:#E3F2E9;color:var(--ok);font-weight:700;padding:2px 8px;border-radius:99px}
+.bump{display:flex;gap:12px;align-items:flex-start;margin-top:14px;background:#FFF7E6;border:2px dashed #E9C77F;border-radius:16px;padding:14px 16px;cursor:pointer;font-size:14px;color:var(--ink-2);line-height:1.45}
+.bump input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--accent);flex:none}
+.bump b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px}
+.ns-note{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
 .pay-note{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:13px;color:var(--muted);margin-top:10px}
 .next-steps{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-top:18px}
 .next-steps h4{margin:0 0 10px;font-size:16px}
@@ -334,7 +341,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
               <div class="wave" id="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               <span class="sc-time" id="scTime">2:48</span>
             </div>
-            <div class="sc-foot"><span>🎧 MP3 + video ricordo</span><span>💛 Unica al mondo</span></div>
+            <div class="sc-foot"><span>🎧 MP3 da tenere per sempre</span><span>💛 Unica al mondo</span></div>
           </div>
         </div>
       </div>
@@ -357,7 +364,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
       <div class="steps">
         <div class="step"><div class="num">1</div><h3>Rispondi al quiz</h3><p>Due minuti dal telefono: il suo nome, la sua età, cosa ama, cosa vuoi dirgli. Anche un ricordo che solo voi conoscete.</p></div>
         <div class="step"><div class="num">2</div><h3>Scriviamo la sua canzone</h3><p>Trasformiamo le tue risposte in un testo che parla solo di lui o di lei, e lo portiamo in musica nello stile che hai scelto.</p></div>
-        <div class="step"><div class="num">3</div><h3>Guarda la sua faccia</h3><p>Ricevi la canzone su email e WhatsApp, pronta da fargli ascoltare. Poi preparati: di solito scendono le lacrime (le tue).</p></div>
+        <div class="step"><div class="num">3</div><h3>Guarda la sua faccia</h3><p>Ricevi la canzone su email e WhatsApp in circa una settimana (o in 48 ore con la consegna prioritaria). Poi preparati: di solito scendono le lacrime (le tue).</p></div>
       </div>
     </div>
   </section>
@@ -375,7 +382,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
         <div class="feat"><div class="ic">💌</div><h3>Le tue parole</h3><p>Quello che vorresti dirgli e a volte non riesci a dire.</p></div>
         <div class="feat"><div class="ic">📸</div><h3>I vostri ricordi</h3><p>Un momento, una frase buffa, un rito della buonanotte.</p></div>
         <div class="feat"><div class="ic">🎹</div><h3>Lo stile che preferisci</h3><p>Ninna nanna, pop allegro, ballata, acustica, rap.</p></div>
-        <div class="feat"><div class="ic">🎬</div><h3>Video con il testo</h3><p>Da riguardare, condividere con i nonni, conservare.</p></div>
+        <div class="feat"><div class="ic">🎧</div><h3>Vostra per sempre</h3><p>Un file MP3 da ascoltare in auto, in cameretta, ovunque.</p></div>
       </div>
     </div>
   </section>
@@ -415,10 +422,11 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
     <div class="wrap">
       <div class="center"><p class="kicker">Domande frequenti</p><h2>Hai qualche dubbio?</h2></div>
       <div class="faq">
-        <details><summary>Quanto costa?</summary><p>Dipende dal pacchetto che scegli (solo canzone, canzone con video o regalo completo). Vedi tutti i prezzi alla fine del quiz, prima di decidere: completarlo è gratis e non ti impegna a nulla.</p></details>
-        <details><summary>In quanto tempo la ricevo?</summary><p>Da 2 a 5 giorni a seconda del pacchetto. Per Natale, ordina entro il 15 dicembre per riceverla in tempo.</p></details>
-        <details><summary>Come la ricevo?</summary><p>Via email e, se vuoi, direttamente su WhatsApp: un file MP3 da ascoltare ovunque e, nei pacchetti con video, un video con il testo da guardare insieme.</p></details>
+        <details><summary>Quanto costa?</summary><p>Una canzone costa 25 €. Se vuoi regalarne più di una (ai fratelli, a un nipote o per un’altra occasione) 2 canzoni costano 35 € e 3 canzoni 49 €. Completare il quiz è gratis e non ti impegna a nulla: il prezzo lo vedi alla fine, prima di decidere.</p></details>
+        <details><summary>In quanto tempo la ricevo?</summary><p>In circa una settimana. Se hai fretta puoi scegliere la consegna prioritaria: con 5 € in più la ricevi in 48 ore. Per Natale, ordina entro il 15 dicembre per riceverla in tempo.</p></details>
+        <details><summary>Come la ricevo?</summary><p>Via email e, se vuoi, direttamente su WhatsApp: un file MP3 in alta qualità da ascoltare ovunque e da conservare per sempre.</p></details>
         <details><summary>Posso chiedere modifiche?</summary><p>Sì. Prima di registrare la canzone ti inviamo il testo da approvare, così puoi cambiare parole, aggiungere dettagli o correggere un nome.</p></details>
+        <details><summary>Posso ordinare canzoni per più figli?</summary><p>Sì, ed è conveniente: 2 canzoni costano 35 € e 3 canzoni 49 €. Fai il quiz per il primo figlio e, dopo l’ordine, ti chiediamo i dettagli per gli altri.</p></details>
         <details><summary>Chi la canta?</summary><p>Scegli tu nel quiz se preferisci una voce femminile, maschile o un duetto. Se non hai preferenze, scegliamo noi quella più adatta allo stile.</p></details>
         <details><summary>Va bene anche per un figlio grande?</summary><p>Assolutamente. Per i ragazzi e i figli adulti scriviamo ballate, canzoni pop o rap: perfette per i 18 anni, la laurea, il matrimonio o semplicemente per dirgli quanto sei fiera di lui.</p></details>
         <details><summary>Posso pubblicarla sui social?</summary><p>Certo, la canzone è vostra: potete condividerla con parenti e amici e usarla nei vostri video personali.</p></details>
@@ -899,12 +907,16 @@ function showLead(){
 }
 
 /* ---------- risultato / offerta ---------- */
+// Prezzo di una canzone singola: serve per calcolare il risparmio dei pacchetti
+var UNIT_PRICE = 25;
 var PKGS = [
-  {id:'base', name:'La Canzone', price:49, feats:['Canzone personalizzata di 2–3 minuti','Il nome cantato nel testo','File MP3 in alta qualità','Consegna in 5 giorni','1 modifica al testo inclusa']},
-  {id:'video', name:'Canzone + Video Ricordo', price:69, badge:'Il più scelto', feats:['Tutto quello de “La Canzone”','Video con testo animato e le vostre foto','Consegna in 3 giorni','2 modifiche al testo incluse']},
-  {id:'completo', name:'Il Regalo Completo', price:99, feats:['Tutto quello del “Video Ricordo”','Seconda versione: ninna nanna o karaoke','Biglietto regalo stampabile con QR code','Consegna express in 48 ore','Modifiche al testo illimitate']}
+  {id:'uno', songs:1, price:25, name:'1 canzone', feats:function(){ return ['La canzone di ' + N() + ', scritta da zero (2–3 minuti)', 'Il nome cantato nel testo', 'Testo da approvare prima della registrazione', 'File MP3 in alta qualità', 'Consegna in circa una settimana']; }},
+  {id:'due', songs:2, price:35, name:'2 canzoni', badge:'Ideale per fratelli e sorelle', feats:function(){ return ['La canzone di ' + N() + ' + un’altra canzone a tua scelta', 'Per un fratello, un nipote, un figlioccio o un’altra occasione', 'Stessa cura e stessa garanzia per ogni canzone']; }},
+  {id:'tre', songs:3, price:49, name:'3 canzoni', badge:'Miglior prezzo', feats:function(){ return ['La canzone di ' + N() + ' + altre due canzoni a tua scelta', 'Perfetto per famiglie numerose o per i regali di Natale', 'Stessa cura e stessa garanzia per ogni canzone']; }}
 ];
-var selPkg = 'video';
+var selPkg = 'uno', express = false;
+var EXPRESS_PRICE = 5;
+var euro = function(n){ return '€' + (Math.round(n * 100) % 100 ? n.toFixed(2).replace('.', ',') : n); };
 
 function labelOf(id, v){
   var s = STEPS.filter(function(x){ return x.id === id; })[0];
@@ -952,18 +964,21 @@ function showResult(){
 
   body.innerHTML =
     '<div class="res-head"><h2 class="q-title">' + esc(L.parentName) + ', ecco la canzone che creeremo per ' + esc(N()) + ' 💛</h2>' +
-    '<p class="q-sub" style="margin:0">Abbiamo tutto quello che ci serve. Scegli il pacchetto e iniziamo a scrivere.</p></div>' +
+    '<p class="q-sub" style="margin:0">Abbiamo tutto quello che ci serve. Scegli quante canzoni vuoi e iniziamo a scrivere.</p></div>' +
     '<div class="res-grid">' +
       '<div><div class="summary"><div class="sc-label">Titolo provvisorio</div><h3>« ' + esc(songTitle()) + ' »</h3><dl>' +
         rows.map(function(r){ return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
       '</dl></div>' +
-      '<div class="next-steps"><h4>Cosa succede dopo l’ordine</h4><ol><li>Scriviamo il testo e te lo mandiamo da approvare.</li><li>Lo trasformiamo in musica nello stile che hai scelto.</li><li>Ricevi la canzone via email' + (L.phone ? ' e WhatsApp' : '') + ', pronta da regalare.</li></ol></div></div>' +
+      '<div class="next-steps"><h4>Cosa succede dopo l’ordine</h4><ol><li>Scriviamo il testo e te lo mandiamo da approvare.</li><li>Lo trasformiamo in musica nello stile che hai scelto.</li><li>Ricevi la canzone via email' + (L.phone ? ' e WhatsApp' : '') + ', pronta da regalare.</li></ol><p class="ns-note">Se scegli 2 o 3 canzoni, dopo l’ordine ti chiediamo i dettagli delle altre: bastano due minuti.</p></div></div>' +
       '<div><div class="pkgs" role="radiogroup" aria-label="Scegli il pacchetto">' + PKGS.map(function(p){
+        var full = p.songs * UNIT_PRICE;
         return '<button type="button" class="pkg' + (p.id === selPkg ? ' sel' : '') + '" role="radio" aria-checked="' + (p.id === selPkg) + '" data-p="' + p.id + '">' +
-          (p.badge ? '<span class="badge">⭐ ' + p.badge + '</span>' : '') +
-          '<div class="pkg-top"><span class="pkg-name"><span class="ck"></span>' + esc(p.name) + '</span><span class="pkg-price">€' + p.price + '</span></div>' +
-          '<ul>' + p.feats.map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></button>';
+          (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : '') +
+          '<div class="pkg-top"><span class="pkg-name"><span class="ck"></span>' + esc(p.name) + '</span><span class="pkg-price">' + (full > p.price ? '<s>' + euro(full) + '</s>' : '') + euro(p.price) + '</span></div>' +
+          (full > p.price ? '<div class="pkg-save"><span>Risparmi ' + euro(full - p.price) + '</span>' + euro(p.price / p.songs) + ' a canzone</div>' : '') +
+          '<ul>' + p.feats().map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></button>';
       }).join('') + '</div>' +
+      '<label class="bump"><input type="checkbox" id="express"' + (express ? ' checked' : '') + '><span><b>⚡ Consegna prioritaria in 48 ore: <span style="white-space:nowrap">+' + euro(EXPRESS_PRICE) + '</span></b>Il tuo ordine passa in cima alla lista: lo ricevi in 48 ore invece che in circa una settimana.</span></label>' +
       '<div style="margin-top:16px"><button class="btn" id="buyBtn" type="button"></button>' +
       '<div class="pay-note"><span>🔒 Pagamento sicuro</span><span>💳 Carta, Apple Pay, Google Pay</span></div>' +
       '<div id="payMsg"></div>' +
@@ -972,7 +987,12 @@ function showResult(){
   animateIn(true);
 
   var buy = $('#buyBtn');
-  var setBuy = function(){ var p = PKGS.filter(function(x){ return x.id === selPkg; })[0]; buy.innerHTML = 'Ordina la canzone di ' + esc(N()) + ' · €' + p.price + ' <span class="arr">→</span>'; };
+  var pkg = function(){ return PKGS.filter(function(x){ return x.id === selPkg; })[0]; };
+  var total = function(){ return pkg().price + (express ? EXPRESS_PRICE : 0); };
+  var setBuy = function(){
+    var p = pkg();
+    buy.innerHTML = (p.songs === 1 ? 'Ordina la canzone di ' + esc(N()) : 'Ordina ' + p.songs + ' canzoni') + ' · ' + euro(total()) + ' <span class="arr">→</span>';
+  };
   $$('.pkg', body).forEach(function(b){
     b.onclick = function(){
       selPkg = b.dataset.p;
@@ -980,13 +1000,14 @@ function showResult(){
       setBuy();
     };
   });
+  $('#express').onchange = function(e){ express = e.target.checked; setBuy(); };
   setBuy();
   buy.onclick = function(){
-    var p = PKGS.filter(function(x){ return x.id === selPkg; })[0];
-    store.set('ddn_order', {pkg: p.id, value: p.price, leadId: L.id});
-    track('track', 'InitiateCheckout', {value: p.price, currency: 'EUR', content_name: p.name});
-    sendWebhook({event:'checkout_click', leadId: L.id, package: p.id, value: p.price, contact: {name: L.parentName, email: L.email, phone: L.phone}, createdAt: new Date().toISOString()});
-    var link = (C.paymentLinks || {})[p.id];
+    var p = pkg(), value = total(), name = p.name + (express ? ' + consegna 48h' : '');
+    store.set('ddn_order', {pkg: p.id, express: express, value: value, leadId: L.id});
+    track('track', 'InitiateCheckout', {value: value, currency: 'EUR', content_name: name, num_items: p.songs});
+    sendWebhook({event:'checkout_click', leadId: L.id, package: p.id, songs: p.songs, express: express, value: value, contact: {name: L.parentName, email: L.email, phone: L.phone}, createdAt: new Date().toISOString()});
+    var link = (C.paymentLinks || {})[p.id + (express ? '_express' : '')];
     if (link) {
       try {
         var u = new URL(link);
@@ -996,7 +1017,7 @@ function showResult(){
         return;
       } catch(e){}
     }
-    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore ' + (L.phone ? 'su WhatsApp o ' : '') + 'all’indirizzo <b>' + esc(L.email) + '</b> per completare l’ordine del pacchetto “' + esc(p.name) + '”. Codice: ' + esc(L.id) + '</div>';
+    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore ' + (L.phone ? 'su WhatsApp o ' : '') + 'all’indirizzo <b>' + esc(L.email) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>';
   };
 }
 

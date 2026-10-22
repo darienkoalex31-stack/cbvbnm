@@ -61,14 +61,21 @@ Le domande servono **sia a scrivere la canzone sia a vendere**: ogni risposta è
 
 Poi: **schermata “Stiamo immaginando la canzone di Leonardo…”** (4 secondi, aumenta il valore percepito) → **form contatto** (nome, email, WhatsApp facoltativo, consenso privacy) → **pagina offerta personalizzata**: riepilogo con *titolo provvisorio* generato dalle risposte (es. *« Sempre accanto a te, Leonardo »*), 3 pacchetti, garanzia, cosa succede dopo l'ordine.
 
-### Prezzi proposti (modificabili in `index.html`, cerca `var PKGS`)
-| Pacchetto | Prezzo | Contenuto |
-|---|---|---|
-| La Canzone | €49 | Canzone 2–3 min, MP3, 5 giorni, 1 modifica |
-| **Canzone + Video Ricordo** (preselezionato, “il più scelto”) | €69 | + video con testo e foto, 3 giorni, 2 modifiche |
-| Il Regalo Completo | €99 | + seconda versione (ninna nanna/karaoke), biglietto con QR, 48 ore, modifiche illimitate |
+### Prezzi (modificabili in `index.html`, cerca `var PKGS`)
+| Pacchetto | Prezzo | Prezzo a canzone | Risparmio mostrato |
+|---|---|---|---|
+| 1 canzone (preselezionato) | €25 | €25 | — |
+| 2 canzoni (*Ideale per fratelli e sorelle*) | €35 | €17,50 | €15 (invece di €50) |
+| 3 canzoni (*Miglior prezzo*) | €49 | €16,33 | €26 (invece di €75) |
+| **Consegna prioritaria in 48 ore** (casella sopra il bottone) | +€5 | | consegna standard: circa una settimana |
 
-Il pacchetto centrale è quello su cui puntare: il primo fa da “ancora” bassa, il terzo fa sembrare il centrale un affare.
+Perché questi prezzi:
+- **€25 è un acquisto d'impulso**: la mamma che arriva da un annuncio non deve pensarci troppo. Ogni canzone in più costa meno, quindi conviene prendere i pacchetti, che fanno salire lo scontrino medio senza toccare il prezzo d'ingresso.
+- **3 canzoni a €49 invece di €50**: resta sotto la soglia dei 50 € e il risparmio mostrato (€26) è più grande di quello del pacchetto da 2 (€15), così il risparmio cresce con il numero di canzoni.
+- Il prezzo barrato è la somma reale delle canzoni singole (2 × €25, 3 × €25): è un confronto vero, non uno sconto inventato.
+- **+€5 per le 48 ore** è un'aggiunta semplice: costa poco, si sceglie in un clic e funziona bene sotto le feste, quando la gente ha fretta.
+
+Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione: il quiz raccoglie i dati della prima, e i dettagli delle altre li chiedi dopo l'ordine (la pagina lo dice).
 
 ---
 
@@ -76,7 +83,7 @@ Il pacchetto centrale è quello su cui puntare: il primo fa da “ancora” bass
 
 1. **Meta Pixel** → `pixelId`. Si attiva **solo se l'utente accetta i cookie** (obbligatorio in Italia). Eventi inviati: `PageView`, `ViewContent`, `QuizStart` e `QuizComplete` (custom), `Lead` (form compilato), `InitiateCheckout` (clic su ordina), `Purchase` (su `grazie.html`). Per le campagne ottimizza su `Lead` all'inizio, poi su `Purchase` quando hai almeno ~50 acquisti a settimana. Consigliato aggiungere più avanti la Conversions API (lato server) per recuperare le conversioni perse.
 2. **Lead** → `webhookUrl`. Ogni lead arriva in JSON con contatti, risposte leggibili, sorgente UTM/fbclid e codice (`DDN-XXXXX`). Il modo più semplice: uno scenario **Make** o **Zapier** con “Custom webhook” → Google Sheets + email/WhatsApp di notifica a te. Senza webhook i lead **non vengono salvati da nessuna parte**: configuralo prima di accendere le ads.
-3. **Pagamenti** → `paymentLinks`. Crea 3 **Payment Link su Stripe** (49/69/99 €), attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html`. Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata, così colleghi ogni pagamento alle risposte del quiz. Finché i link sono vuoti, il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore” (utile per partire subito e chiudere le vendite su WhatsApp).
+3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html`. Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata, così colleghi ogni pagamento alle risposte del quiz. Finché i link sono vuoti, il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore” (utile per partire subito e chiudere le vendite su WhatsApp).
 4. **Media** → `heroVideo` (+ `heroVideoPoster`) e/o `sampleAudio`: carica i file nella cartella e scrivi il nome, es. `'esempio-sofia.mp3'`.
 5. **Email** → `contactEmail`.
 
@@ -88,7 +95,7 @@ Per provarlo in locale: `cd ildonodellenote && python3 -m http.server` e apri `h
 
 ## 5. Da verificare prima di accendere le ads
 
-- [ ] **Tempi di consegna** (5 giorni / 3 giorni / 48 ore) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
+- [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
 - [ ] **Condizioni della Garanzia Emozione** (riscrittura gratuita + rimborso): scrivile anche nei termini di vendita.
 - [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. Servono anche i **termini e condizioni di vendita** (diritto di recesso: per un prodotto personalizzato è escluso, ma va scritto).
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
