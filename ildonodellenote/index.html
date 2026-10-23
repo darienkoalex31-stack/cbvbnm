@@ -267,6 +267,9 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 .bump input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--accent);flex:none}
 .bump b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px}
 .ns-note{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
+.ex-list{display:grid;gap:10px;max-width:420px;margin:18px auto 0}
+.ex-done{padding:14px;border-radius:999px;background:#E3F2E9;color:var(--ok);font-weight:700;text-align:center}
+.icon-big{font-size:56px;line-height:1}
 .pay-note{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:13px;color:var(--muted);margin-top:10px}
 .next-steps{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-top:18px}
 .next-steps h4{margin:0 0 10px;font-size:16px}
@@ -564,33 +567,51 @@ if ('IntersectionObserver' in window) {
 /* =====================================================
    QUIZ
    ===================================================== */
-var A = store.get('ddn_answers') || {};
-var save = function(){ store.set('ddn_answers', A); };
+// Canzoni in più (pacchetti da 2 o 3): dopo il pagamento la mamma torna qui con
+// ?canzone=2&di=3&ordine=DDN-XXXX e compila il quiz solo per quella canzone.
+var EXTRA = (function(){
+  var q = new URLSearchParams(location.search), n = parseInt(q.get('canzone'), 10), tot = parseInt(q.get('di'), 10), id = (q.get('ordine') || '').replace(/[^\w-]/g, '').slice(0, 40);
+  return n >= 2 && n <= 3 && id ? {n: n, tot: Math.min(3, Math.max(n, tot || n)), id: id} : null;
+})();
+var AKEY = EXTRA ? 'ddn_extra_' + EXTRA.id + '_' + EXTRA.n : 'ddn_answers';
+var A = store.get(AKEY) || {};
+var save = function(){ store.set(AKEY, A); };
+function extraLinks(id, songs){
+  var done = store.get('ddn_extra_done') || [], h = '';
+  for (var n = 2; n <= songs; n++) {
+    h += done.indexOf(id + '_' + n) > -1
+      ? '<div class="ex-done">✓ Canzone ' + n + ': ricevuta</div>'
+      : '<a class="btn ex-btn" href="?canzone=' + n + '&di=' + songs + '&ordine=' + encodeURIComponent(id) + '">Racconta la canzone ' + n + ' <span class="arr">→</span></a>';
+  }
+  return h;
+}
 
 var isAtt = function(){ return A.rel === 'attesa'; };
 var isPl  = function(){ return A.rel === 'fratelli'; };
-var isF   = function(){ return A.rel === 'figlia'; };
+var isF   = function(){ return A.rel === 'figlia' || A.rel === 'nipote_f'; };
 var solo  = function(){ return !A.from || A.from === 'mamma'; };      // regalo solo della mamma → "io", altrimenti "noi"
 var ha    = function(){ return isPl() ? 'hanno' : 'ha'; };
 function N(){
   if (A.name && A.name.trim()) return capName(A.name);
-  return ({figlio:'tuo figlio', figlia:'tua figlia', fratelli:'i tuoi figli', attesa:'il tuo bimbo'})[A.rel] || 'tuo figlio';
+  return ({figlio:'tuo figlio', figlia:'tua figlia', fratelli:'i tuoi figli', attesa:'il tuo bimbo', nipote_m:'tuo nipote', nipote_f:'tua nipote'})[A.rel] || 'tuo figlio';
 }
 function lui(){ return isPl() ? 'loro' : isF() ? 'lei' : 'lui'; }
 
 var STEPS = [
   { id:'rel', type:'single',
     title:function(){ return 'Per chi è la canzone?'; },
-    sub:function(){ return 'Iniziamo dalla persona più importante 💛'; },
-    options:function(){ return [
+    sub:function(){ return EXTRA ? 'Canzone ' + EXTRA.n + ' di ' + EXTRA.tot + ': le stesse domande, per la prossima canzone 💛' : 'Iniziamo dalla persona più importante 💛'; },
+    options:function(){ var o = [
       {v:'figlio', e:'👦', l:'Mio figlio'},
       {v:'figlia', e:'👧', l:'Mia figlia'},
       {v:'fratelli', e:'👧👦', l:'I miei figli', d:'Una canzone per fratelli e sorelle'},
       {v:'attesa', e:'🤰', l:'Il bimbo che sto aspettando', d:'Per accoglierlo nel mondo'}
-    ]; } },
+    ];
+    if (EXTRA) o.push({v:'nipote_m', e:'🧒', l:'Mio nipote o figlioccio'}, {v:'nipote_f', e:'👧', l:'Mia nipote o figlioccia'});
+    return o; } },
 
   { id:'name', type:'text',
-    title:function(){ return isPl() ? 'Come si chiamano?' : isAtt() ? 'Avete già scelto il nome?' : isF() ? 'Come si chiama tua figlia?' : 'Come si chiama tuo figlio?'; },
+    title:function(){ return isPl() ? 'Come si chiamano?' : isAtt() ? 'Avete già scelto il nome?' : /^nipote/.test(A.rel) ? 'Come si chiama?' : isF() ? 'Come si chiama tua figlia?' : 'Come si chiama tuo figlio?'; },
     sub:function(){ return isAtt() ? 'Se non l’avete ancora deciso lascia vuoto: lo aggiungeremo quando vorrete.' : 'Il nome sarà cantato nella canzone 🎶'; },
     fields:function(){ return [
       {k:'name', label: isPl() ? 'I loro nomi' : 'Nome', ph: isPl() ? 'Es. Sofia e Leonardo' : isF() ? 'Es. Sofia' : isAtt() ? 'Es. Leonardo (facoltativo)' : 'Es. Leonardo', req: !isAtt(), max:60, ac:'off'},
@@ -621,7 +642,7 @@ var STEPS = [
     title:function(){ return 'Da parte di chi è il regalo?'; },
     sub:function(){ return 'Scriveremo il testo con la vostra voce.'; },
     options:function(){ return [
-      {v:'mamma', e:'👩', l:'Da me, la mamma'},
+      {v:'mamma', e:'👩', l: /^nipote/.test(A.rel) ? 'Da me' : 'Da me, la mamma'},
       {v:'genitori', e:'💑', l:'Da mamma e papà'},
       {v:'famiglia', e:'🏡', l:'Da tutta la famiglia'},
       {v:'nonni', e:'👵', l:'Dai nonni'}
@@ -705,7 +726,7 @@ function openQuiz(){
   cur = 0; phase = 'q';
   history.pushState({v:'q', i:0}, '');
   renderStep();
-  track('trackCustom', 'QuizStart');
+  track('trackCustom', EXTRA ? 'ExtraSongStart' : 'QuizStart');
 }
 function closeQuiz(){
   quiz.hidden = true; document.body.classList.remove('locked');
@@ -737,7 +758,7 @@ function renderStep(){
   var steps = vis();
   if (cur >= steps.length) cur = steps.length - 1;
   var s = steps[cur];
-  setProgress(cur + 1, steps.length + 1, 'Domanda ' + (cur + 1) + ' di ' + steps.length);
+  setProgress(cur + 1, steps.length + 1, (EXTRA ? 'Canzone ' + EXTRA.n + ' · ' : '') + 'Domanda ' + (cur + 1) + ' di ' + steps.length);
   var h = '<h2 class="q-title">' + esc(s.title()) + '</h2><p class="q-sub">' + esc(s.sub()) + '</p>';
 
   if (s.type === 'single' || s.type === 'multi') {
@@ -826,7 +847,27 @@ function wireStep(s){
 function next(){
   var steps = vis();
   if (cur < steps.length - 1) { cur++; history.pushState({v:'q', i:cur}, ''); renderStep(); }
+  else if (EXTRA) showExtraDone();
   else showLoading();
+}
+
+/* ---------- canzone in più completata ---------- */
+function showExtraDone(){
+  phase = 'extra';
+  foot.hidden = true;
+  setProgress(1, 1, 'Canzone ' + EXTRA.n + ' di ' + EXTRA.tot);
+  var done = store.get('ddn_extra_done') || [], key = EXTRA.id + '_' + EXTRA.n;
+  if (done.indexOf(key) < 0) {
+    done.push(key); store.set('ddn_extra_done', done);
+    sendWebhook({event:'extra_song', leadId: EXTRA.id, song: EXTRA.n, of: EXTRA.tot, answers: readableAnswers(), raw: A, createdAt: new Date().toISOString()});
+    track('trackCustom', 'ExtraSongComplete');
+  }
+  var more = extraLinks(EXTRA.id, EXTRA.tot);
+  body.innerHTML = '<div class="loading"><div class="icon-big">🎶</div>' +
+    '<h2 class="q-title">Fatto! Abbiamo tutto per la canzone di ' + esc(N()) + '</h2>' +
+    '<p class="q-sub">' + (more.indexOf('ex-btn') > -1 ? 'Manca ancora una canzone: raccontacela quando vuoi, anche più tardi da questo link.' : 'Hai raccontato tutte le canzoni. Entro 24 ore ti scriviamo su WhatsApp con i testi da approvare.') + '</p>' +
+    '<div class="ex-list">' + more + '</div><p class="q-hint">Codice ordine: ' + esc(EXTRA.id) + '</p></div>';
+  animateIn(false);
 }
 $('#qBack').onclick = function(){ history.back(); };
 
@@ -969,7 +1010,7 @@ function showResult(){
       '<div><div class="summary"><div class="sc-label">Titolo provvisorio</div><h3>« ' + esc(songTitle()) + ' »</h3><dl>' +
         rows.map(function(r){ return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
       '</dl></div>' +
-      '<div class="next-steps"><h4>Come funziona da qui</h4><ol><li>Completi l’ordine qui sotto: ci vuole un minuto.</li><li>Entro 24 ore ti mandiamo su WhatsApp il testo da approvare. Se vuoi cambiare qualcosa, ce lo scrivi.</li><li>Lo trasformiamo in canzone nello stile che hai scelto.</li><li>Ricevi la canzone su WhatsApp in circa una settimana (in 48 ore con la consegna prioritaria).</li></ol><p class="ns-note">Se scegli 2 o 3 canzoni, dopo l’ordine ti chiediamo i dettagli delle altre: bastano due minuti.</p></div></div>' +
+      '<div class="next-steps"><h4>Come funziona da qui</h4><ol><li>Completi l’ordine qui sotto: ci vuole un minuto.</li><li>Entro 24 ore ti mandiamo su WhatsApp il testo da approvare. Se vuoi cambiare qualcosa, ce lo scrivi.</li><li>Lo trasformiamo in canzone nello stile che hai scelto.</li><li>Ricevi la canzone su WhatsApp in circa una settimana (in 48 ore con la consegna prioritaria).</li></ol><p class="ns-note">Se scegli 2 o 3 canzoni, subito dopo il pagamento compili un quiz breve per ciascuna delle altre: 2 minuti l’una.</p></div></div>' +
       '<div><div class="pkgs" role="radiogroup" aria-label="Scegli il pacchetto">' + PKGS.map(function(p){
         var full = p.songs * UNIT_PRICE;
         return '<button type="button" class="pkg' + (p.id === selPkg ? ' sel' : '') + '" role="radio" aria-checked="' + (p.id === selPkg) + '" data-p="' + p.id + '">' +
@@ -1004,7 +1045,7 @@ function showResult(){
   setBuy();
   buy.onclick = function(){
     var p = pkg(), value = total(), name = p.name + (express ? ' + consegna 48h' : '');
-    store.set('ddn_order', {pkg: p.id, express: express, value: value, leadId: L.id});
+    store.set('ddn_order', {pkg: p.id, songs: p.songs, express: express, value: value, leadId: L.id});
     track('track', 'InitiateCheckout', {value: value, currency: 'EUR', content_name: name, num_items: p.songs});
     sendWebhook({event:'checkout_click', leadId: L.id, package: p.id, songs: p.songs, express: express, value: value, contact: {name: L.parentName, email: L.email, phone: L.phone}, createdAt: new Date().toISOString()});
     var link = (C.paymentLinks || {})[p.id + (express ? '_express' : '')];
@@ -1017,12 +1058,14 @@ function showResult(){
         return;
       } catch(e){}
     }
-    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore su WhatsApp al numero <b>' + esc(L.phone) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>';
+    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore su WhatsApp al numero <b>' + esc(L.phone) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>' +
+      (p.songs > 1 ? '<div class="ex-list" style="margin-top:14px"><p class="ns-note" style="margin:0">Intanto puoi raccontarci le altre canzoni (2 minuti ciascuna):</p>' + extraLinks(L.id, p.songs) + '</div>' : '');
   };
 }
 
 /* ---------- ripresa se ricarica con stato ---------- */
 history.replaceState(null, '');
+if (EXTRA) openQuiz();
 })();
 </script>
 </body>

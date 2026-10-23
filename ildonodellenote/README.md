@@ -77,7 +77,12 @@ Perché questi prezzi:
 - Il prezzo barrato è la somma reale delle canzoni singole (2 × €25, 3 × €25): è un confronto vero, non uno sconto inventato.
 - **+€5 per le 48 ore** è un'aggiunta semplice: costa poco, si sceglie in un clic e funziona bene sotto le feste, quando la gente ha fretta.
 
-Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione: il quiz raccoglie i dati della prima, e i dettagli delle altre li chiedi dopo l'ordine (la pagina lo dice).
+Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione. **Come funziona con 2 o 3 canzoni:**
+1. La mamma fa **un solo quiz** (per la prima canzone), sceglie il pacchetto e paga: niente domande in più prima del pagamento.
+2. Nella pagina `grazie.html` trova **"Hai scelto 2 canzoni"** con un bottone per ogni canzone in più ("Racconta la canzone 2 →").
+3. Il bottone riapre il quiz in modalità *canzone in più* (`index.html?canzone=2&di=3&ordine=DDN-XXXX`): stesse domande, con in più "Mio nipote / Mia nipote o figlioccio/a", senza modulo contatti né prezzi.
+4. Alla fine il webhook riceve l'evento `extra_song` con lo stesso codice ordine e il numero della canzone, così in Google Sheets le risposte stanno accanto all'ordine.
+5. Se la mamma chiude prima di finire, può riprendere più tardi dalla pagina di conferma; se ha pagato da un altro telefono, la pagina le dice che le scriverete voi su WhatsApp.
 
 ---
 
@@ -85,7 +90,7 @@ Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione: il q
 
 1. **Meta Pixel** → `pixelId`. Si attiva **solo se l'utente accetta i cookie** (obbligatorio in Italia). Eventi inviati: `PageView`, `ViewContent`, `QuizStart` e `QuizComplete` (custom), `Lead` (form compilato), `InitiateCheckout` (clic su ordina), `Purchase` (su `grazie.html`). Per le campagne ottimizza su `Lead` all'inizio, poi su `Purchase` quando hai almeno ~50 acquisti a settimana. Consigliato aggiungere più avanti la Conversions API (lato server) per recuperare le conversioni perse.
 2. **Lead** → `webhookUrl`. Ogni lead arriva in JSON con contatti, risposte leggibili, sorgente UTM/fbclid e codice (`DDN-XXXXX`). Il modo più semplice: uno scenario **Make** o **Zapier** con “Custom webhook” → Google Sheets + email/WhatsApp di notifica a te. Senza webhook i lead **non vengono salvati da nessuna parte**: configuralo prima di accendere le ads.
-3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html`. Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata se l'ha inserita, così colleghi ogni pagamento alle risposte del quiz. Se hai un solo link, mettilo in `uno`: per le scelte che non hanno un link il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore su WhatsApp” e chiudi la vendita in chat.
+3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html` (per i link da 2 e 3 canzoni usa `grazie.html?canzoni=2` e `grazie.html?canzoni=3`). Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata se l'ha inserita, così colleghi ogni pagamento alle risposte del quiz. Se hai un solo link, mettilo in `uno`: per le scelte che non hanno un link il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore su WhatsApp” e chiudi la vendita in chat.
 4. **Media** → `heroVideo` (+ `heroVideoPoster`) e/o `sampleAudio`: carica i file nella cartella e scrivi il nome, es. `'esempio-sofia.mp3'`.
 5. **Contatti** → `whatsapp` (il numero del negozio, solo cifre con prefisso, es. `393331234567`: compare come pulsante nella pagina di conferma) e `contactEmail`.
 

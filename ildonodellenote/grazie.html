@@ -22,6 +22,12 @@ p{color:var(--ink-2)}
 ol{text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 20px 20px 40px;display:grid;gap:8px}
 .wa{display:inline-block;background:#25D366;color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px}
 [hidden]{display:none!important}
+.extra{background:#fff;border:2px solid var(--accent);border-radius:20px;padding:20px;margin:18px 0}
+.extra h2{font-family:Fraunces,Georgia,serif;font-size:24px;margin:0 0 6px}
+.extra p{margin:0 0 14px}
+.ex-list{display:grid;gap:10px}
+.ex-btn{display:block;background:var(--accent);color:#fff!important;text-decoration:none;font-weight:700;padding:15px 18px;border-radius:999px}
+.ex-done{padding:14px;border-radius:999px;background:#E3F2E9;color:#3E8E63;font-weight:700}
 .code{display:inline-block;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:4px 12px;font-weight:700}
 a{color:var(--plum)}
 </style>
@@ -31,6 +37,11 @@ a{color:var(--plum)}
   <div class="icon">🎶</div>
   <h1>Grazie! La sua canzone <em>sta per nascere</em></h1>
   <p>Abbiamo ricevuto il tuo ordine. Ecco cosa succede adesso:</p>
+  <section class="extra" id="extra" hidden>
+    <h2>Hai scelto <span id="exN"></span> canzoni 🎶</h2>
+    <p>La prima ce l’hai già raccontata. Ora raccontaci le altre: stesse domande, 2 minuti ciascuna. Puoi farlo anche più tardi da questa pagina.</p>
+    <div class="ex-list" id="exBtns"></div>
+  </section>
   <ol>
     <li>Entro 24 ore, di solito in giornata, ti scriviamo <b>su WhatsApp</b> con il <b>testo da approvare</b>.</li>
     <li>Se vuoi cambiare qualcosa, ce lo scrivi in chat. Una volta approvato, lo trasformiamo in musica.</li>
@@ -48,6 +59,24 @@ a{color:var(--plum)}
   if (C.whatsapp) { var wa = document.getElementById('wa'); wa.href = 'https://wa.me/' + String(C.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Ciao! Ho appena ordinato una canzone su Il Dono delle Note'); wa.hidden = false; }
   var order = get('ddn_order');
   if (order && order.leadId) { document.getElementById('code').textContent = order.leadId; document.getElementById('codeLine').hidden = false; if (C.whatsapp) document.getElementById('wa').href += encodeURIComponent(' (codice ' + order.leadId + ')'); }
+  // Pacchetti da 2 o 3 canzoni: link al quiz per ciascuna canzone in più
+  var songs = (order && (order.songs || {due:2, tre:3}[order.pkg])) || parseInt(new URLSearchParams(location.search).get('canzoni'), 10) || 1;
+  if (songs > 1) {
+    var ex = document.getElementById('extra'), list = document.getElementById('exBtns'), done = get('ddn_extra_done') || [];
+    document.getElementById('exN').textContent = songs;
+    if (order && order.leadId) {
+      for (var n = 2; n <= songs; n++) {
+        if (done.indexOf(order.leadId + '_' + n) > -1) { list.insertAdjacentHTML('beforeend', '<div class="ex-done">✓ Canzone ' + n + ': ricevuta</div>'); continue; }
+        var a = document.createElement('a');
+        a.className = 'ex-btn'; a.textContent = 'Racconta la canzone ' + n + ' →';
+        a.href = 'index.html?canzone=' + n + '&di=' + songs + '&ordine=' + encodeURIComponent(order.leadId);
+        list.appendChild(a);
+      }
+    } else {
+      list.insertAdjacentHTML('beforeend', '<p style="margin:0">Ti scriviamo su WhatsApp per farci raccontare le altre canzoni.</p>');
+    }
+    ex.hidden = false;
+  }
   // Evento Purchase: solo con consenso cookie e una sola volta per ordine
   if (C.pixelId && get('ddn_consent') === 'yes' && order && !order.tracked) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
