@@ -20,6 +20,8 @@ h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,7vw,4
 h1 em{font-style:italic;font-weight:500;color:var(--accent)}
 p{color:var(--ink-2)}
 ol{text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 20px 20px 40px;display:grid;gap:8px}
+.wa{display:inline-block;background:#25D366;color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px}
+[hidden]{display:none!important}
 .code{display:inline-block;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:4px 12px;font-weight:700}
 a{color:var(--plum)}
 </style>
@@ -30,11 +32,12 @@ a{color:var(--plum)}
   <h1>Grazie! La sua canzone <em>sta per nascere</em></h1>
   <p>Abbiamo ricevuto il tuo ordine. Ecco cosa succede adesso:</p>
   <ol>
-    <li>Entro 24 ore ti mandiamo via email il <b>testo da approvare</b>.</li>
-    <li>Una volta approvato, lo trasformiamo in musica.</li>
-    <li>Ricevi la canzone pronta da regalare, nei tempi del pacchetto scelto.</li>
+    <li>Entro 24 ore, di solito in giornata, ti scriviamo <b>su WhatsApp</b> con il <b>testo da approvare</b>.</li>
+    <li>Se vuoi cambiare qualcosa, ce lo scrivi in chat. Una volta approvato, lo trasformiamo in musica.</li>
+    <li>Ricevi la canzone su WhatsApp, pronta da regalare: in circa una settimana, o in 48 ore con la consegna prioritaria.</li>
   </ol>
   <p id="codeLine" hidden>Il tuo codice ordine: <span class="code" id="code"></span></p>
+  <p><a class="wa" id="wa" href="#" hidden>💬 Scrivici su WhatsApp</a></p>
   <p>Hai un dubbio o vuoi aggiungere un dettaglio? Scrivici a <a id="mail" href="mailto:ciao@ildonodellenote.it">ciao@ildonodellenote.it</a></p>
 </main>
 <script>
@@ -42,8 +45,9 @@ a{color:var(--plum)}
   var C = window.DDN_CONFIG || {};
   var get = function(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } };
   if (C.contactEmail) { var m = document.getElementById('mail'); m.href = 'mailto:' + C.contactEmail; m.textContent = C.contactEmail; }
+  if (C.whatsapp) { var wa = document.getElementById('wa'); wa.href = 'https://wa.me/' + String(C.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Ciao! Ho appena ordinato una canzone su Il Dono delle Note'); wa.hidden = false; }
   var order = get('ddn_order');
-  if (order && order.leadId) { document.getElementById('code').textContent = order.leadId; document.getElementById('codeLine').hidden = false; }
+  if (order && order.leadId) { document.getElementById('code').textContent = order.leadId; document.getElementById('codeLine').hidden = false; if (C.whatsapp) document.getElementById('wa').href += encodeURIComponent(' (codice ' + order.leadId + ')'); }
   // Evento Purchase: solo con consenso cookie e una sola volta per ordine
   if (C.pixelId && get('ddn_consent') === 'yes' && order && !order.tracked) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');

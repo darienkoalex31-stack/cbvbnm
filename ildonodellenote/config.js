@@ -22,6 +22,8 @@ window.DDN_CONFIG = {
   // Al link vengono aggiunti client_reference_id (codice lead) e prefilled_email.
   // Su Stripe imposta come pagina di conferma: https://ildonodellenote.it/grazie.html
   // Servono 6 link: i 3 pacchetti, con e senza consegna prioritaria in 48 ore (+5 €).
+  // Se per ora hai un solo link, mettilo in "uno": per le scelte senza link il sito
+  // mostra "Richiesta ricevuta, ti scriviamo su WhatsApp" e chiudi l'ordine in chat.
   paymentLinks: {
     uno: '',            // 1 canzone, 25 €
     due: '',            // 2 canzoni, 35 €
@@ -30,6 +32,10 @@ window.DDN_CONFIG = {
     due_express: '',    // 2 canzoni + 48 ore, 40 €
     tre_express: ''     // 3 canzoni + 48 ore, 54 €
   },
+
+  // Numero WhatsApp del negozio, solo cifre con prefisso (es. '393331234567').
+  // Compare nella pagina di conferma come pulsante "Scrivici su WhatsApp".
+  whatsapp: '',
 
   contactEmail: 'ciao@ildonodellenote.it'
 };

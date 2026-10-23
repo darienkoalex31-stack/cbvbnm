@@ -349,7 +349,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
       <div class="hero-cta">
         <button class="btn" type="button" data-start id="heroBtn">Crea la sua canzone <span class="arr">→</span></button>
         <div class="btn-note"><span>⏱ Completa il quiz in 2 minuti</span><span>✓ Gratis e senza impegno</span></div>
-        <div class="trust"><span>🎶 Scritta da zero per lui o per lei</span><span>📩 Consegna via email e WhatsApp</span></div>
+        <div class="trust"><span>🎶 Scritta da zero per lui o per lei</span><span>💬 Testo e canzone su WhatsApp</span></div>
       </div>
     </div>
   </section>
@@ -364,7 +364,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
       <div class="steps">
         <div class="step"><div class="num">1</div><h3>Rispondi al quiz</h3><p>Due minuti dal telefono: il suo nome, la sua età, cosa ama, cosa vuoi dirgli. Anche un ricordo che solo voi conoscete.</p></div>
         <div class="step"><div class="num">2</div><h3>Scriviamo la sua canzone</h3><p>Trasformiamo le tue risposte in un testo che parla solo di lui o di lei, e lo portiamo in musica nello stile che hai scelto.</p></div>
-        <div class="step"><div class="num">3</div><h3>Guarda la sua faccia</h3><p>Ricevi la canzone su email e WhatsApp in circa una settimana (o in 48 ore con la consegna prioritaria). Poi preparati: di solito scendono le lacrime (le tue).</p></div>
+        <div class="step"><div class="num">3</div><h3>Guarda la sua faccia</h3><p>Entro 24 ore ricevi su WhatsApp il testo da approvare, poi la canzone in circa una settimana (o in 48 ore con la consegna prioritaria). Poi preparati: di solito scendono le lacrime (le tue).</p></div>
       </div>
     </div>
   </section>
@@ -423,8 +423,8 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
       <div class="center"><p class="kicker">Domande frequenti</p><h2>Hai qualche dubbio?</h2></div>
       <div class="faq">
         <details><summary>Quanto costa?</summary><p>Una canzone costa 25 €. Se vuoi regalarne più di una (ai fratelli, a un nipote o per un’altra occasione) 2 canzoni costano 35 € e 3 canzoni 49 €. Completare il quiz è gratis e non ti impegna a nulla: il prezzo lo vedi alla fine, prima di decidere.</p></details>
-        <details><summary>In quanto tempo la ricevo?</summary><p>In circa una settimana. Se hai fretta puoi scegliere la consegna prioritaria: con 5 € in più la ricevi in 48 ore. Per Natale, ordina entro il 15 dicembre per riceverla in tempo.</p></details>
-        <details><summary>Come la ricevo?</summary><p>Via email e, se vuoi, direttamente su WhatsApp: un file MP3 in alta qualità da ascoltare ovunque e da conservare per sempre.</p></details>
+        <details><summary>In quanto tempo la ricevo?</summary><p>Il testo te lo mandiamo su WhatsApp entro 24 ore dall’ordine. La canzone arriva in circa una settimana. Se hai fretta puoi scegliere la consegna prioritaria: con 5 € in più ricevi tutto in 48 ore. Per Natale, ordina entro il 15 dicembre per riceverla in tempo.</p></details>
+        <details><summary>Come la ricevo?</summary><p>Su WhatsApp: prima il testo da leggere e approvare, poi la canzone in MP3 ad alta qualità, da ascoltare ovunque e conservare per sempre. Se vuoi, te la mandiamo anche via email.</p></details>
         <details><summary>Posso chiedere modifiche?</summary><p>Sì. Prima di registrare la canzone ti inviamo il testo da approvare, così puoi cambiare parole, aggiungere dettagli o correggere un nome.</p></details>
         <details><summary>Posso ordinare canzoni per più figli?</summary><p>Sì, ed è conveniente: 2 canzoni costano 35 € e 3 canzoni 49 €. Fai il quiz per il primo figlio e, dopo l’ordine, ti chiediamo i dettagli per gli altri.</p></details>
         <details><summary>Chi la canta?</summary><p>Scegli tu nel quiz se preferisci una voce femminile, maschile o un duetto. Se non hai preferenze, scegliamo noi quella più adatta allo stile.</p></details>
@@ -846,12 +846,12 @@ function showLoading(){
   setProgress(1, 1, 'Ci siamo quasi…');
   var items = [
     'Leggiamo le tue risposte',
-    'Scegliamo la melodia per ' + N(),
-    'Abbozziamo l’idea del ritornello',
-    'Prepariamo la tua proposta'
+    'Scegliamo la melodia adatta a ' + N(),
+    'Segniamo i dettagli da mettere nel testo',
+    'Prepariamo il tuo riepilogo'
   ];
   body.innerHTML = '<div class="loading"><div class="loader"><div class="vinyl"><span></span></div></div>' +
-    '<h2 class="q-title">Stiamo immaginando la canzone di ' + esc(N()) + '…</h2>' +
+    '<h2 class="q-title">Ci siamo quasi… stiamo preparando tutto per la canzone di ' + esc(N()) + '</h2>' +
     '<ul class="checklist">' + items.map(function(t){ return '<li><span class="d">' + ICON_CK + '</span>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
   animateIn(false);
   var lis = $$('.checklist li', body);
@@ -870,16 +870,16 @@ function showLead(){
   var L = store.get('ddn_lead') || {};
   setProgress(1, 1, 'Ultimo passaggio');
   body.innerHTML =
-    '<h2 class="q-title">Ci siamo! La canzone di ' + esc(N()) + ' è pronta per essere scritta 🎶</h2>' +
-    '<p class="q-sub">Dove ti mandiamo la proposta? Nella pagina successiva vedi subito il riepilogo e i prezzi.</p>' +
+    '<h2 class="q-title">Ci siamo quasi! Abbiamo tutto per scrivere il testo di ' + esc(N()) + ' ✍️</h2>' +
+    '<p class="q-sub">Dove te lo mandiamo? Il testo arriva su WhatsApp, da leggere e approvare, appena completi l’ordine. Nella pagina successiva vedi il riepilogo e i prezzi.</p>' +
     '<form id="leadForm" novalidate>' +
       '<div class="field"><label for="l_name">Il tuo nome</label><input class="inp" id="l_name" autocomplete="given-name" autocapitalize="words" maxlength="50" placeholder="Es. Giulia" value="' + esc(L.parentName || '') + '"></div>' +
-      '<div class="field"><label for="l_email">La tua email</label><input class="inp" id="l_email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="nome@email.it" value="' + esc(L.email || '') + '"></div>' +
-      '<div class="field"><label for="l_phone">WhatsApp <span class="opt-l">(facoltativo)</span></label><input class="inp" id="l_phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="Es. 333 123 4567" value="' + esc(L.phone || '') + '"><small>Per ricevere la canzone direttamente sul telefono.</small></div>' +
+      '<div class="field"><label for="l_phone">Il tuo numero WhatsApp</label><input class="inp" id="l_phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="Es. 333 123 4567" value="' + esc(L.phone || '') + '"><small>Qui ti mandiamo il testo da approvare e poi la canzone.</small></div>' +
+      '<div class="field"><label for="l_email">La tua email <span class="opt-l">(facoltativa)</span></label><input class="inp" id="l_email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="nome@email.it" value="' + esc(L.email || '') + '"><small>Per avere anche una copia della canzone via email.</small></div>' +
       '<label class="check"><input type="checkbox" id="l_priv"' + (L.privacy ? ' checked' : '') + '><span>Ho letto l’<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per ricevere la proposta.</span></label>' +
       '<label class="check"><input type="checkbox" id="l_mkt"' + (L.marketing ? ' checked' : '') + '><span>Voglio ricevere idee regalo e offerte speciali (facoltativo).</span></label>' +
       '<p class="q-hint warn" id="leadErr" role="alert"></p>' +
-      '<button class="btn" type="submit">Vedi la mia proposta <span class="arr">→</span></button>' +
+      '<button class="btn" type="submit">Vedi il riepilogo e i prezzi <span class="arr">→</span></button>' +
       '<div class="btn-note"><span>🔒 I tuoi dati sono al sicuro</span><span>Niente spam, promesso</span></div>' +
     '</form>';
   animateIn(false);
@@ -890,8 +890,8 @@ function showLead(){
     [n, em, ph].forEach(function(x){ x.classList.remove('err'); });
     var phone = ph.value.replace(/[^\d+]/g, '');
     if (!n.value.trim()) { n.classList.add('err'); err.textContent = 'Scrivi il tuo nome'; n.focus(); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())) { em.classList.add('err'); err.textContent = 'Controlla l’indirizzo email'; em.focus(); return; }
-    if (phone && phone.replace('+','').length < 8) { ph.classList.add('err'); err.textContent = 'Controlla il numero di WhatsApp'; ph.focus(); return; }
+    if (phone.replace('+','').length < 9) { ph.classList.add('err'); err.textContent = phone ? 'Controlla il numero di WhatsApp' : 'Scrivi il tuo numero WhatsApp: è lì che ti mandiamo il testo'; ph.focus(); return; }
+    if (em.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())) { em.classList.add('err'); err.textContent = 'Controlla l’indirizzo email'; em.focus(); return; }
     if (!pv.checked) { err.textContent = 'Per continuare serve il consenso privacy'; return; }
     var lead = Object.assign({}, L, {
       id: L.id || ('DDN-' + Date.now().toString(36).toUpperCase().slice(-5) + Math.random().toString(36).slice(2, 5).toUpperCase()),
@@ -910,7 +910,7 @@ function showLead(){
 // Prezzo di una canzone singola: serve per calcolare il risparmio dei pacchetti
 var UNIT_PRICE = 25;
 var PKGS = [
-  {id:'uno', songs:1, price:25, name:'1 canzone', feats:function(){ return ['La canzone di ' + N() + ', scritta da zero (2–3 minuti)', 'Il nome cantato nel testo', 'Testo da approvare prima della registrazione', 'File MP3 in alta qualità', 'Consegna in circa una settimana']; }},
+  {id:'uno', songs:1, price:25, name:'1 canzone', feats:function(){ return ['La canzone di ' + N() + ', scritta da zero (2–3 minuti)', 'Il nome cantato nel testo', 'Testo su WhatsApp entro 24 ore, da approvare', 'File MP3 in alta qualità', 'Consegna in circa una settimana']; }},
   {id:'due', songs:2, price:35, name:'2 canzoni', badge:'Ideale per fratelli e sorelle', feats:function(){ return ['La canzone di ' + N() + ' + un’altra canzone a tua scelta', 'Per un fratello, un nipote, un figlioccio o un’altra occasione', 'Stessa cura e stessa garanzia per ogni canzone']; }},
   {id:'tre', songs:3, price:49, name:'3 canzoni', badge:'Miglior prezzo', feats:function(){ return ['La canzone di ' + N() + ' + altre due canzoni a tua scelta', 'Perfetto per famiglie numerose o per i regali di Natale', 'Stessa cura e stessa garanzia per ogni canzone']; }}
 ];
@@ -963,13 +963,13 @@ function showResult(){
   ].filter(function(r){ return r[1]; });
 
   body.innerHTML =
-    '<div class="res-head"><h2 class="q-title">' + esc(L.parentName) + ', ecco la canzone che creeremo per ' + esc(N()) + ' 💛</h2>' +
-    '<p class="q-sub" style="margin:0">Abbiamo tutto quello che ci serve. Scegli quante canzoni vuoi e iniziamo a scrivere.</p></div>' +
+    '<div class="res-head"><h2 class="q-title">Ci siamo quasi, ' + esc(L.parentName) + '! 💛</h2>' +
+    '<p class="q-sub" style="margin:0">Il testo della canzone di ' + esc(N()) + ' è il prossimo che scriviamo. Completa l’ordine e te lo mandiamo su WhatsApp entro 24 ore, di solito in giornata.</p></div>' +
     '<div class="res-grid">' +
       '<div><div class="summary"><div class="sc-label">Titolo provvisorio</div><h3>« ' + esc(songTitle()) + ' »</h3><dl>' +
         rows.map(function(r){ return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
       '</dl></div>' +
-      '<div class="next-steps"><h4>Cosa succede dopo l’ordine</h4><ol><li>Scriviamo il testo e te lo mandiamo da approvare.</li><li>Lo trasformiamo in musica nello stile che hai scelto.</li><li>Ricevi la canzone via email' + (L.phone ? ' e WhatsApp' : '') + ', pronta da regalare.</li></ol><p class="ns-note">Se scegli 2 o 3 canzoni, dopo l’ordine ti chiediamo i dettagli delle altre: bastano due minuti.</p></div></div>' +
+      '<div class="next-steps"><h4>Come funziona da qui</h4><ol><li>Completi l’ordine qui sotto: ci vuole un minuto.</li><li>Entro 24 ore ti mandiamo su WhatsApp il testo da approvare. Se vuoi cambiare qualcosa, ce lo scrivi.</li><li>Lo trasformiamo in canzone nello stile che hai scelto.</li><li>Ricevi la canzone su WhatsApp in circa una settimana (in 48 ore con la consegna prioritaria).</li></ol><p class="ns-note">Se scegli 2 o 3 canzoni, dopo l’ordine ti chiediamo i dettagli delle altre: bastano due minuti.</p></div></div>' +
       '<div><div class="pkgs" role="radiogroup" aria-label="Scegli il pacchetto">' + PKGS.map(function(p){
         var full = p.songs * UNIT_PRICE;
         return '<button type="button" class="pkg' + (p.id === selPkg ? ' sel' : '') + '" role="radio" aria-checked="' + (p.id === selPkg) + '" data-p="' + p.id + '">' +
@@ -978,7 +978,7 @@ function showResult(){
           (full > p.price ? '<div class="pkg-save"><span>Risparmi ' + euro(full - p.price) + '</span>' + euro(p.price / p.songs) + ' a canzone</div>' : '') +
           '<ul>' + p.feats().map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></button>';
       }).join('') + '</div>' +
-      '<label class="bump"><input type="checkbox" id="express"' + (express ? ' checked' : '') + '><span><b>⚡ Consegna prioritaria in 48 ore: <span style="white-space:nowrap">+' + euro(EXPRESS_PRICE) + '</span></b>Il tuo ordine passa in cima alla lista: lo ricevi in 48 ore invece che in circa una settimana.</span></label>' +
+      '<label class="bump"><input type="checkbox" id="express"' + (express ? ' checked' : '') + '><span><b>⚡ Consegna prioritaria in 48 ore: <span style="white-space:nowrap">+' + euro(EXPRESS_PRICE) + '</span></b>Il tuo ordine passa in cima alla lista: testo e canzone in 48 ore invece che in circa una settimana.</span></label>' +
       '<div style="margin-top:16px"><button class="btn" id="buyBtn" type="button"></button>' +
       '<div class="pay-note"><span>🔒 Pagamento sicuro</span><span>💳 Carta, Apple Pay, Google Pay</span></div>' +
       '<div id="payMsg"></div>' +
@@ -1012,12 +1012,12 @@ function showResult(){
       try {
         var u = new URL(link);
         u.searchParams.set('client_reference_id', L.id);
-        u.searchParams.set('prefilled_email', L.email);
+        if (L.email) u.searchParams.set('prefilled_email', L.email);
         location.href = u.toString();
         return;
       } catch(e){}
     }
-    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore ' + (L.phone ? 'su WhatsApp o ' : '') + 'all’indirizzo <b>' + esc(L.email) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>';
+    $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore su WhatsApp al numero <b>' + esc(L.phone) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>';
   };
 }
 

@@ -59,7 +59,9 @@ Le domande servono **sia a scrivere la canzone sia a vendere**: ogni risposta è
 | 10 | Cosa vuoi che senta (max 2) | Il messaggio del ritornello |
 | 11 | Un ricordo o una frase (facoltativo) | Ciò che rende la canzone unica |
 
-Poi: **schermata “Stiamo immaginando la canzone di Leonardo…”** (4 secondi, aumenta il valore percepito) → **form contatto** (nome, email, WhatsApp facoltativo, consenso privacy) → **pagina offerta personalizzata**: riepilogo con *titolo provvisorio* generato dalle risposte (es. *« Sempre accanto a te, Leonardo »*), 3 pacchetti, garanzia, cosa succede dopo l'ordine.
+Poi: **schermata “Ci siamo quasi…”** (4 secondi, aumenta il valore percepito) → **form contatto** (nome, **WhatsApp obbligatorio**, email facoltativa, consenso privacy) → **pagina “Ci siamo quasi, Giulia!”**: riepilogo con *titolo provvisorio* generato dalle risposte (es. *« Sempre accanto a te, Leonardo »*), 3 pacchetti, consegna prioritaria, garanzia → **pagamento Stripe** → `grazie.html`.
+
+Il testo **non** viene generato in automatico: dopo il pagamento lo scrivete voi e lo mandate su WhatsApp **entro 24 ore** (la pagina dice “di solito in giornata”). La cliente lo approva o chiede modifiche, poi producete la canzone: circa una settimana, 48 ore con la consegna prioritaria.
 
 ### Prezzi (modificabili in `index.html`, cerca `var PKGS`)
 | Pacchetto | Prezzo | Prezzo a canzone | Risparmio mostrato |
@@ -83,9 +85,9 @@ Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione: il q
 
 1. **Meta Pixel** → `pixelId`. Si attiva **solo se l'utente accetta i cookie** (obbligatorio in Italia). Eventi inviati: `PageView`, `ViewContent`, `QuizStart` e `QuizComplete` (custom), `Lead` (form compilato), `InitiateCheckout` (clic su ordina), `Purchase` (su `grazie.html`). Per le campagne ottimizza su `Lead` all'inizio, poi su `Purchase` quando hai almeno ~50 acquisti a settimana. Consigliato aggiungere più avanti la Conversions API (lato server) per recuperare le conversioni perse.
 2. **Lead** → `webhookUrl`. Ogni lead arriva in JSON con contatti, risposte leggibili, sorgente UTM/fbclid e codice (`DDN-XXXXX`). Il modo più semplice: uno scenario **Make** o **Zapier** con “Custom webhook” → Google Sheets + email/WhatsApp di notifica a te. Senza webhook i lead **non vengono salvati da nessuna parte**: configuralo prima di accendere le ads.
-3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html`. Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata, così colleghi ogni pagamento alle risposte del quiz. Finché i link sono vuoti, il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore” (utile per partire subito e chiudere le vendite su WhatsApp).
+3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html`. Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata se l'ha inserita, così colleghi ogni pagamento alle risposte del quiz. Se hai un solo link, mettilo in `uno`: per le scelte che non hanno un link il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore su WhatsApp” e chiudi la vendita in chat.
 4. **Media** → `heroVideo` (+ `heroVideoPoster`) e/o `sampleAudio`: carica i file nella cartella e scrivi il nome, es. `'esempio-sofia.mp3'`.
-5. **Email** → `contactEmail`.
+5. **Contatti** → `whatsapp` (il numero del negozio, solo cifre con prefisso, es. `393331234567`: compare come pulsante nella pagina di conferma) e `contactEmail`.
 
 ## 4. Pubblicazione su ildonodellenote.it
 
