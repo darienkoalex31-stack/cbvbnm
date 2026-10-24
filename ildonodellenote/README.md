@@ -1,0 +1,122 @@
+# Il Dono delle Note — landing page + quiz
+
+Sito per **ildonodellenote.it**: landing page per il traffico delle Facebook/Instagram Ads, rivolta alle mamme che vogliono regalare al figlio una canzone personalizzata. Il percorso è **landing → quiz → raccolta contatto → proposta con prezzi → pagamento**.
+
+È un sito statico (HTML + CSS + JS, senza dipendenze e senza build): si pubblica così com'è.
+
+| File | Cosa contiene |
+|---|---|
+| `index.html` | Landing, quiz, form contatto e pagina offerta (tutto in un'unica pagina, veloce da caricare su mobile) |
+| `config.js` | **L'unico file da compilare**: Meta Pixel, webhook dei lead, link di pagamento, video/audio dell'hero |
+| `grazie.html` | Pagina di conferma dopo il pagamento (evento `Purchase` del pixel) |
+| `COLLEGAMENTI.md` | Come collegare Stripe, il primo messaggio WhatsApp automatico e le misurazioni |
+| `privacy.html` | Informativa privacy e cookie (**da completare** con i dati del titolare) |
+| `og-image.png` | Anteprima mostrata quando il link viene condiviso (WhatsApp, Facebook) |
+
+---
+
+## 1. La strategia della landing
+
+Il traffico da Facebook è al 90% da telefono, freddo e distratto: la pagina deve far capire in 3 secondi **cosa ricevi, per chi è e perché non rischi niente**, e portare al quiz con un solo tocco.
+
+**Prima schermata del telefono**, nell'ordine (il bottone sta a circa 360 px dall'alto, visibile senza scorrere):
+1. **Titolo = offerta + risultato**: *"Regala a tuo figlio una canzone tutta sua, con il suo nome e la vostra storia"*.
+2. **Sottotitolo**: il problema (un regalo che non finisce in un cassetto) e come funziona in una riga.
+3. **Bottone** *"Crea la sua canzone →"* con *"Quiz di 2 minuti, gratis · Vedi il prezzo prima di decidere: da 25 €"*. Dire subito il prezzo di partenza toglie il dubbio "quanto mi costerà?" e porta al quiz persone già d'accordo sulla cifra.
+4. **Garanzia Emozione**: approvi il testo prima della registrazione; se non ti emoziona la riscriviamo gratis o rimborsiamo.
+5. **Card della canzone** (esempio illustrativo) o video.
+
+Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su mobile c'è anche una barra con il bottone fissa in basso dopo l'hero.
+
+### Immagine o video?
+**Video, appena lo hai.** Per questo prodotto l'asset che vende è la **reazione**: un bambino che sente il suo nome cantato, la mamma che si commuove. Specifiche consigliate: verticale 4:5 o 9:16, 15–30 secondi, sottotitoli impressi (molti guardano senza audio), il nome cantato entro i primi 3 secondi. Lo stesso video può essere anche la creatività dell'annuncio, così la landing continua quello che la mamma ha appena visto.
+
+**Finché non c'è il video**, l'hero mostra una “card” animata della canzone (vinile che gira, titolo *"La canzone di Sofia"* con nomi che cambiano: Sofia, Leonardo, Giulia…, e una strofa di testo). Fa vedere subito che il prodotto è *personalizzato*. Appena hai **un MP3 di esempio** mettilo in `sampleAudio`: compare il tasto ▶ nella card. Far sentire la qualità è la cosa più importante dopo il video.
+
+### Copy da testare (A/B)
+- Titolo B: *"Il regalo di Natale che tuo figlio non dimenticherà: una canzone scritta solo per lui"* (da usare fino a metà dicembre).
+- Titolo C: *"Il suo nome, la vostra storia, le tue parole. In una canzone."*
+- CTA B: *"Scopri come sarà la sua canzone →"*
+
+---
+
+## 2. Il quiz
+
+Dieci domande, una per schermata, risposte grandi da toccare col pollice, avanzamento automatico sulle scelte singole, barra di avanzamento, tasto indietro (funziona anche il “indietro” del telefono). Le risposte vengono salvate nel browser: se la mamma chiude e riapre, le ritrova.
+
+Le domande servono **sia a scrivere la canzone sia a vendere**: ogni risposta è un piccolo “sì” che aumenta l'investimento emotivo prima di vedere il prezzo. Il nome del figlio viene usato nelle domande successive (*"Quanti anni ha Leonardo?"*).
+
+| # | Domanda | Perché |
+|---|---|---|
+| 1 | Per chi è? *Mio figlio / Mia figlia / I miei figli / Il bimbo che aspetto* | Adatta tutti i testi (lui/lei/loro). “Il bimbo che aspetto” apre il mercato delle future mamme |
+| 2 | Come si chiama? + soprannome | Il nome è il cuore del prodotto; il soprannome rende il testo intimo |
+| 3 | Età (0–2 … 18+) | Tono e stile; salta per chi è in attesa |
+| 4 | Occasione (Natale, compleanno, nascita/battesimo, comunione, 18 anni/laurea, nessuna) | Tono del testo + segmentazione del pubblico |
+| 5 | Da parte di chi (mamma, mamma e papà, famiglia, nonni) | Il testo parla con “io” o “noi”. I nonni sono un secondo pubblico da targetizzare |
+| 6 | Stile musicale (ninna nanna, pop, ballata, acustica, rap, rock) | Con badge **Consigliato** in base all'età |
+| 7 | Cosa lo rende speciale (max 3) | Materiale per le strofe; tutte parole valide per maschi e femmine |
+| 8 | Cosa ama (max 4 + “altro”) | Dettagli concreti nel testo |
+| 9 | Cosa vuoi che senta (max 2) | Il messaggio del ritornello |
+| 10 | Un ricordo o una frase (facoltativo) | Ciò che rende la canzone unica |
+
+La **voce** (femminile, maschile, duetto) non è più una domanda del quiz: si sceglie su WhatsApp insieme al testo. Una schermata in meno, e nessuna informazione persa.
+
+**Rassicurazioni contestuali.** Sotto alcune domande compare una riga che risponde al dubbio di quel momento, solo quando serve:
+- domanda 1: gratis e senza impegno, il prezzo (da 25 €) si vede alla fine;
+- nome: per i nomi difficili ci dici la pronuncia con il testo; se ha scelto "I miei figli", una canzone per tutti oppure 2–3 canzoni;
+- dopo aver scelto **Natale** o **compleanno**: la scadenza del 15 dicembre e la consegna in 48 ore (+5 €);
+- stile: la voce si sceglie con il testo e lo stile si può ancora cambiare;
+- caratteristiche: le parole mancanti si scrivono nell'ultima domanda;
+- messaggio: diventa il ritornello;
+- ricordo: si può saltare e aggiungere dopo su WhatsApp.
+
+Prima del bottone del modulo contatti c'è un riepilogo in 3 righe di cosa succede dopo (adesso non paghi nulla → testo su WhatsApp entro 24 ore → canzone).
+
+Poi: **schermata “Ci siamo quasi…”** (4 secondi, aumenta il valore percepito) → **form contatto** (nome, **WhatsApp obbligatorio**, email facoltativa, consenso privacy) → **pagina “Ci siamo quasi, Giulia!”**: riepilogo con *titolo provvisorio* generato dalle risposte (es. *« Sempre accanto a te, Leonardo »*), 3 pacchetti, consegna prioritaria, garanzia → **pagamento Stripe** → `grazie.html`.
+
+Il testo **non** viene generato in automatico: dopo il pagamento lo scrivete voi e lo mandate su WhatsApp **entro 24 ore** (la pagina dice “di solito in giornata”). La cliente lo approva o chiede modifiche, poi producete la canzone: circa una settimana, 48 ore con la consegna prioritaria.
+
+### Prezzi (modificabili in `index.html`, cerca `var PKGS`)
+| Pacchetto | Prezzo | Prezzo a canzone | Risparmio mostrato |
+|---|---|---|---|
+| 1 canzone (preselezionato) | €25 | €25 | — |
+| 2 canzoni (*Ideale per fratelli e sorelle*) | €35 | €17,50 | €15 (invece di €50) |
+| 3 canzoni (*Miglior prezzo*) | €49 | €16,33 | €26 (invece di €75) |
+| **Consegna prioritaria in 48 ore** (casella sopra il bottone) | +€5 | | consegna standard: circa una settimana |
+
+Perché questi prezzi:
+- **€25 è un acquisto d'impulso**: la mamma che arriva da un annuncio non deve pensarci troppo. Ogni canzone in più costa meno, quindi conviene prendere i pacchetti, che fanno salire lo scontrino medio senza toccare il prezzo d'ingresso.
+- **3 canzoni a €49 invece di €50**: resta sotto la soglia dei 50 € e il risparmio mostrato (€26) è più grande di quello del pacchetto da 2 (€15), così il risparmio cresce con il numero di canzoni.
+- Il prezzo barrato è la somma reale delle canzoni singole (2 × €25, 3 × €25): è un confronto vero, non uno sconto inventato.
+- **+€5 per le 48 ore** è un'aggiunta semplice: costa poco, si sceglie in un clic e funziona bene sotto le feste, quando la gente ha fretta.
+
+Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione. **Come funziona con 2 o 3 canzoni:**
+1. La mamma fa **un solo quiz** (per la prima canzone), sceglie il pacchetto e paga: niente domande in più prima del pagamento.
+2. Nella pagina `grazie.html` trova **"Hai scelto 2 canzoni"** con un bottone per ogni canzone in più ("Racconta la canzone 2 →").
+3. Il bottone riapre il quiz in modalità *canzone in più* (`index.html?canzone=2&di=3&ordine=DDN-XXXX`): stesse domande, con in più "Mio nipote / Mia nipote o figlioccio/a", senza modulo contatti né prezzi.
+4. Alla fine il webhook riceve l'evento `extra_song` con lo stesso codice ordine e il numero della canzone, così in Google Sheets le risposte stanno accanto all'ordine.
+5. Se la mamma chiude prima di finire, può riprendere più tardi dalla pagina di conferma; se ha pagato da un altro telefono, la pagina le dice che le scriverete voi su WhatsApp.
+
+---
+
+## 3. Configurazione (`config.js`)
+
+1. **Meta Pixel** → `pixelId`. Si attiva **solo se l'utente accetta i cookie** (obbligatorio in Italia). Eventi inviati: `PageView`, `ViewContent`, `QuizStart` e `QuizComplete` (custom), `Lead` (form compilato), `InitiateCheckout` (clic su ordina), `Purchase` (su `grazie.html`). Per le campagne ottimizza su `Lead` all'inizio, poi su `Purchase` quando hai almeno ~50 acquisti a settimana. Consigliato aggiungere più avanti la Conversions API (lato server) per recuperare le conversioni perse.
+2. **Lead** → `webhookUrl`. Ogni lead arriva in JSON con contatti, risposte leggibili, sorgente UTM/fbclid e codice (`DDN-XXXXX`). Il modo più semplice: uno scenario **Make** o **Zapier** con “Custom webhook” → Google Sheets + email/WhatsApp di notifica a te. Senza webhook i lead **non vengono salvati da nessuna parte**: configuralo prima di accendere le ads.
+3. **Pagamenti** → `paymentLinks`. Crea 6 **Payment Link su Stripe**: i tre pacchetti (25/35/49 €) e le stesse versioni con la consegna in 48 ore (30/40/54 €). Attiva Apple Pay, Google Pay (e PayPal se vuoi), e come pagina di conferma imposta `https://ildonodellenote.it/grazie.html` (per i link da 2 e 3 canzoni usa `grazie.html?canzoni=2` e `grazie.html?canzoni=3`). Il sito passa a Stripe il codice lead (`client_reference_id`) e l'email precompilata se l'ha inserita, così colleghi ogni pagamento alle risposte del quiz. Se hai un solo link, mettilo in `uno`: per le scelte che non hanno un link il bottone mostra “Richiesta ricevuta, ti scriviamo entro 24 ore su WhatsApp” e chiudi la vendita in chat.
+4. **Media** → `heroVideo` (+ `heroVideoPoster`) e/o `sampleAudio`: carica i file nella cartella e scrivi il nome, es. `'esempio-sofia.mp3'`.
+5. **Contatti** → `whatsapp` (il numero del negozio, solo cifre con prefisso, es. `393331234567`: compare come pulsante nella pagina di conferma) e `contactEmail`.
+
+## 4. Pubblicazione su ildonodellenote.it
+
+Il modo più rapido: **Netlify** (gratis). *Add new site → Deploy manually* e trascina la cartella `ildonodellenote/` (oppure collega questo repository con *Base directory* = `ildonodellenote`). Poi *Domain settings → Add custom domain → ildonodellenote.it* e imposta nel pannello del registrar i DNS che Netlify ti indica. L'HTTPS è automatico. Va bene uguale anche Vercel o Cloudflare Pages.
+
+Per provarlo in locale: `cd ildonodellenote && python3 -m http.server` e apri `http://localhost:8000`.
+
+## 5. Da verificare prima di accendere le ads
+
+- [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
+- [ ] **Condizioni della Garanzia Emozione** (riscrittura gratuita + rimborso): scrivile anche nei termini di vendita.
+- [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. Servono anche i **termini e condizioni di vendita** (diritto di recesso: per un prodotto personalizzato è escluso, ma va scritto).
+- [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
+- [ ] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini**.
