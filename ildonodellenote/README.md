@@ -9,6 +9,7 @@ Sito per **ildonodellenote.it**: landing page per il traffico delle Facebook/Ins
 | `index.html` | Landing, quiz, form contatto e pagina offerta (tutto in un'unica pagina, veloce da caricare su mobile) |
 | `config.js` | **L'unico file da compilare**: Meta Pixel, webhook dei lead, link di pagamento, video/audio dell'hero |
 | `grazie.html` | Pagina di conferma dopo il pagamento (evento `Purchase` del pixel) |
+| `COLLEGAMENTI.md` | Come collegare Stripe, il primo messaggio WhatsApp automatico e le misurazioni |
 | `privacy.html` | Informativa privacy e cookie (**da completare** con i dati del titolare) |
 | `og-image.png` | Anteprima mostrata quando il link viene condiviso (WhatsApp, Facebook) |
 
@@ -18,14 +19,14 @@ Sito per **ildonodellenote.it**: landing page per il traffico delle Facebook/Ins
 
 Il traffico da Facebook è al 90% da telefono, freddo e distratto: la pagina deve far capire in 3 secondi **cosa ricevi, per chi è e perché non rischi niente**, e portare al quiz con un solo tocco.
 
-**Sopra la piega (hero)**, nell'ordine:
+**Prima schermata del telefono**, nell'ordine (il bottone sta a circa 360 px dall'alto, visibile senza scorrere):
 1. **Titolo = offerta + risultato**: *"Regala a tuo figlio una canzone tutta sua, con il suo nome e la vostra storia"*.
-2. **Sottotitolo**: come funziona in una riga (*tu racconti, noi scriviamo e produciamo*).
-3. **Garanzia Emozione**: *se non ti emoziona la riscriviamo gratis, altrimenti rimborso*. Toglie il rischio, che è la prima obiezione su un acquisto emotivo e “al buio”.
-4. **Media** (vedi sotto).
-5. **Bottone**: *"Crea la sua canzone →"* con *"Completa il quiz in 2 minuti · Gratis e senza impegno"*. Su mobile c'è anche una barra col bottone sempre visibile in basso.
+2. **Sottotitolo**: il problema (un regalo che non finisce in un cassetto) e come funziona in una riga.
+3. **Bottone** *"Crea la sua canzone →"* con *"Quiz di 2 minuti, gratis · Vedi il prezzo prima di decidere: da 25 €"*. Dire subito il prezzo di partenza toglie il dubbio "quanto mi costerà?" e porta al quiz persone già d'accordo sulla cifra.
+4. **Garanzia Emozione**: approvi il testo prima della registrazione; se non ti emoziona la riscriviamo gratis o rimborsiamo.
+5. **Card della canzone** (esempio illustrativo) o video.
 
-Sotto: come funziona (3 passi), cosa c'è dentro la canzone, frase emotiva (*"Tra vent'anni non si ricorderà dei giocattoli…"*), occasioni d'uso, garanzia, FAQ, CTA finale.
+Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su mobile c'è anche una barra con il bottone fissa in basso dopo l'hero.
 
 ### Immagine o video?
 **Video, appena lo hai.** Per questo prodotto l'asset che vende è la **reazione**: un bambino che sente il suo nome cantato, la mamma che si commuove. Specifiche consigliate: verticale 4:5 o 9:16, 15–30 secondi, sottotitoli impressi (molti guardano senza audio), il nome cantato entro i primi 3 secondi. Lo stesso video può essere anche la creatività dell'annuncio, così la landing continua quello che la mamma ha appena visto.
@@ -41,7 +42,7 @@ Sotto: come funziona (3 passi), cosa c'è dentro la canzone, frase emotiva (*"Tr
 
 ## 2. Il quiz
 
-Una domanda per schermata, risposte grandi da toccare col pollice, avanzamento automatico sulle scelte singole, barra di avanzamento, tasto indietro (funziona anche il “indietro” del telefono). Le risposte vengono salvate nel browser: se la mamma chiude e riapre, le ritrova.
+Dieci domande, una per schermata, risposte grandi da toccare col pollice, avanzamento automatico sulle scelte singole, barra di avanzamento, tasto indietro (funziona anche il “indietro” del telefono). Le risposte vengono salvate nel browser: se la mamma chiude e riapre, le ritrova.
 
 Le domande servono **sia a scrivere la canzone sia a vendere**: ogni risposta è un piccolo “sì” che aumenta l'investimento emotivo prima di vedere il prezzo. Il nome del figlio viene usato nelle domande successive (*"Quanti anni ha Leonardo?"*).
 
@@ -53,11 +54,23 @@ Le domande servono **sia a scrivere la canzone sia a vendere**: ogni risposta è
 | 4 | Occasione (Natale, compleanno, nascita/battesimo, comunione, 18 anni/laurea, nessuna) | Tono del testo + segmentazione del pubblico |
 | 5 | Da parte di chi (mamma, mamma e papà, famiglia, nonni) | Il testo parla con “io” o “noi”. I nonni sono un secondo pubblico da targetizzare |
 | 6 | Stile musicale (ninna nanna, pop, ballata, acustica, rap, rock) | Con badge **Consigliato** in base all'età |
-| 7 | Voce (femminile, maschile, duetto, scegliete voi) | |
-| 8 | Cosa lo rende speciale (max 3) | Materiale per le strofe; tutte parole valide per maschi e femmine |
-| 9 | Cosa ama (max 4 + “altro”) | Dettagli concreti nel testo |
-| 10 | Cosa vuoi che senta (max 2) | Il messaggio del ritornello |
-| 11 | Un ricordo o una frase (facoltativo) | Ciò che rende la canzone unica |
+| 7 | Cosa lo rende speciale (max 3) | Materiale per le strofe; tutte parole valide per maschi e femmine |
+| 8 | Cosa ama (max 4 + “altro”) | Dettagli concreti nel testo |
+| 9 | Cosa vuoi che senta (max 2) | Il messaggio del ritornello |
+| 10 | Un ricordo o una frase (facoltativo) | Ciò che rende la canzone unica |
+
+La **voce** (femminile, maschile, duetto) non è più una domanda del quiz: si sceglie su WhatsApp insieme al testo. Una schermata in meno, e nessuna informazione persa.
+
+**Rassicurazioni contestuali.** Sotto alcune domande compare una riga che risponde al dubbio di quel momento, solo quando serve:
+- domanda 1: gratis e senza impegno, il prezzo (da 25 €) si vede alla fine;
+- nome: per i nomi difficili ci dici la pronuncia con il testo; se ha scelto "I miei figli", una canzone per tutti oppure 2–3 canzoni;
+- dopo aver scelto **Natale** o **compleanno**: la scadenza del 15 dicembre e la consegna in 48 ore (+5 €);
+- stile: la voce si sceglie con il testo e lo stile si può ancora cambiare;
+- caratteristiche: le parole mancanti si scrivono nell'ultima domanda;
+- messaggio: diventa il ritornello;
+- ricordo: si può saltare e aggiungere dopo su WhatsApp.
+
+Prima del bottone del modulo contatti c'è un riepilogo in 3 righe di cosa succede dopo (adesso non paghi nulla → testo su WhatsApp entro 24 ore → canzone).
 
 Poi: **schermata “Ci siamo quasi…”** (4 secondi, aumenta il valore percepito) → **form contatto** (nome, **WhatsApp obbligatorio**, email facoltativa, consenso privacy) → **pagina “Ci siamo quasi, Giulia!”**: riepilogo con *titolo provvisorio* generato dalle risposte (es. *« Sempre accanto a te, Leonardo »*), 3 pacchetti, consegna prioritaria, garanzia → **pagamento Stripe** → `grazie.html`.
 

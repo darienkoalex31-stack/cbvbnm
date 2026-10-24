@@ -7,6 +7,10 @@ window.DDN_CONFIG = {
   // ID del Meta Pixel (Gestione Eventi di Facebook). Es. '123456789012345'
   pixelId: '',
 
+  // ID di misurazione Google Analytics 4. Es. 'G-XXXXXXXXXX'
+  // Serve a misurare avvio quiz, abbandoni domanda per domanda, contatti e acquisti.
+  ga4Id: '',
+
   // URL di un webhook che riceve i lead del quiz in JSON (Make, Zapier, n8n, Google Apps Script…).
   // Riceve due eventi: "lead" (dopo il form) e "checkout_click" (quando sceglie un pacchetto).
   webhookUrl: '',

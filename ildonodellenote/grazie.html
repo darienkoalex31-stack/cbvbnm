@@ -78,6 +78,14 @@ a{color:var(--plum)}
     ex.hidden = false;
   }
   // Evento Purchase: solo con consenso cookie e una sola volta per ordine
+  if (C.ga4Id && get('ddn_consent') === 'yes' && order && !order.gaTracked) {
+    var sc = document.createElement('script'); sc.async = true; sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(C.ga4Id); document.head.appendChild(sc);
+    window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', C.ga4Id);
+    gtag('event', 'purchase', {transaction_id: order.leadId, value: order.value, currency: 'EUR'});
+    order.gaTracked = true;
+    try { localStorage.setItem('ddn_order', JSON.stringify(order)); } catch(e){}
+  }
   if (C.pixelId && get('ddn_consent') === 'yes' && order && !order.tracked) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', C.pixelId);
