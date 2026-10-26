@@ -26,7 +26,7 @@ Il traffico da Facebook è al 90% da telefono, freddo e distratto: la pagina dev
 4. **Garanzia Emozione**: approvi il testo prima della registrazione; se non ti emoziona la riscriviamo gratis o rimborsiamo.
 5. **Card della canzone** (esempio illustrativo) o video.
 
-Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su mobile c'è anche una barra con il bottone fissa in basso dopo l'hero.
+Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su telefono, dopo l'hero, lo stesso bottone resta in basso mentre si scorre e si ferma al suo posto in fondo alla pagina: è sempre a portata di pollice e non sparisce mai di colpo. Tutti i bottoni dicono la stessa cosa (*"Crea la sua canzone →"*). In fondo c'è il footer con contatti (WhatsApp ed email), pagamenti e dati dell'attività.
 
 ### Immagine o video?
 **Video, appena lo hai.** Per questo prodotto l'asset che vende è la **reazione**: un bambino che sente il suo nome cantato, la mamma che si commuove. Specifiche consigliate: verticale 4:5 o 9:16, 15–30 secondi, sottotitoli impressi (molti guardano senza audio), il nome cantato entro i primi 3 secondi. Lo stesso video può essere anche la creatività dell'annuncio, così la landing continua quello che la mamma ha appena visto.
@@ -120,3 +120,4 @@ Per provarlo in locale: `cd ildonodellenote && python3 -m http.server` e apri `h
 - [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. Servono anche i **termini e condizioni di vendita** (diritto di recesso: per un prodotto personalizzato è escluso, ma va scritto).
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
 - [ ] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini**.
+- [ ] **Dati dell'attività nel footer** (`legalInfo` in `config.js`): ragione sociale o nome e cognome e partita IVA sono obbligatori su un sito che vende.

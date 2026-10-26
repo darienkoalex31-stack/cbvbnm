@@ -75,6 +75,8 @@ h1 em{font-style:italic;font-weight:500;color:var(--accent)}
 @keyframes nudge{0%,88%,100%{transform:scale(1)}92%{transform:scale(1.035)}96%{transform:scale(.99)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .btn-note{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:13.5px;color:var(--muted);margin-top:10px}
+.btn-note span{display:inline-flex;align-items:center;gap:5px}
+.ic-ck{width:14px;height:14px;flex:none;color:var(--ok)}
 @media (min-width:920px){.hero-cta .btn{width:auto;min-width:380px}.btn-note{justify-content:flex-start}}
 
 /* song card mockup */
@@ -147,17 +149,24 @@ h2 em{font-style:italic;font-weight:500;color:var(--accent)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:0 0 17px;color:var(--ink-2)}
 
-.final{padding:64px 0 90px;text-align:center}
-.final .btn{max-width:440px}
-footer{border-top:1px solid var(--line);padding:26px 0 100px;font-size:13.5px;color:var(--muted);text-align:center}
-footer a{color:var(--muted)}
-footer nav{display:flex;gap:16px;justify-content:center;margin-bottom:8px}
+.final{padding:56px 0 6px;text-align:center}
+.final .lead-p{margin:0 auto}
+.site-foot{background:var(--plum);color:#E9DFF0;font-size:14.5px;padding-block:40px 28px}
+.site-foot .logo{color:#fff;margin-bottom:10px}
+.site-foot p{margin:0;max-width:32em;color:#D8CBE4}
+.site-foot a{color:#fff;text-underline-offset:3px}
+.site-foot h3{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#FFD9A0;margin:0 0 10px}
+.foot-grid{display:grid;gap:26px}
+@media (min-width:760px){.foot-grid{grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}}
+.foot-list{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.foot-legal{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;color:#C9BAD8}
 
-/* sticky mobile CTA */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,246,239,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
-.sticky-cta.show{transform:none}
-.sticky-cta .btn{padding:15px 20px;font-size:17px}
-@media (min-width:920px){.sticky-cta{display:none}}
+/* bottone che accompagna lo scorrimento (solo telefono) e si ferma alla fine della pagina */
+.dock{position:sticky;bottom:0;z-index:30;padding:10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));background:rgba(251,246,239,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--line);transition:background-color .3s ease,border-color .3s ease}
+.dock .btn{display:flex;max-width:440px;margin:0 auto}
+.dock.parked{background:rgba(251,246,239,0);border-top-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.dock-note{margin:0;padding:0 16px 48px}
+@media (min-width:920px){.dock{position:static;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}}
 
 /* ---------- quiz ---------- */
 .quiz{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column}
@@ -264,6 +273,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 .ex-done{padding:14px;border-radius:999px;background:#E3F2E9;color:var(--ok);font-weight:700;text-align:center}
 .icon-big{font-size:56px;line-height:1}
 .pay-note{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:13px;color:var(--muted);margin-top:10px}
+.pay-note span{display:inline-flex;align-items:center;gap:5px}
 .next-steps{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-top:18px}
 .next-steps h4{margin:0 0 10px;font-size:16px}
 .next-steps ol{margin:0;padding-left:20px;color:var(--ink-2);font-size:14.5px;display:grid;gap:6px}
@@ -312,7 +322,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 
       <div class="hero-cta">
         <button class="btn" type="button" data-start id="heroBtn">Crea la sua canzone <span class="arr">→</span></button>
-        <div class="btn-note"><span>⏱ Quiz di 2 minuti, gratis</span><span>💶 Vedi il prezzo prima di decidere: da 25 €</span></div>
+        <div class="btn-note"><span><svg class="ic-ck" aria-hidden="true"><use href="#i-check"/></svg>Quiz di 2 minuti, gratis</span><span><svg class="ic-ck" aria-hidden="true"><use href="#i-check"/></svg>Vedi il prezzo prima di decidere: da 25 €</span></div>
         <div class="guarantee-pill">
           <svg class="seal" aria-hidden="true"><use href="#i-seal"/></svg>
           <span><b>Garanzia Emozione:</b> approvi il testo prima della registrazione. Se la canzone non ti emoziona, la riscriviamo gratis o ti rimborsiamo.</span>
@@ -348,6 +358,7 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
     </div>
   </section>
 
+  <div class="cta-track">
   <section class="block alt" id="come-funziona">
     <div class="wrap">
       <div class="center">
@@ -402,20 +413,39 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
   <section class="final">
     <div class="wrap">
       <h2>Il suo nome merita <em>una canzone</em></h2>
-      <p class="lead-p" style="margin:0 auto 26px">Rispondi a poche domande e scopri come sarà la canzone di tuo figlio.</p>
-      <button class="btn" type="button" data-start>Inizia il quiz gratuito <span class="arr">→</span></button>
-      <div class="btn-note"><span>⏱ 2 minuti</span><span>💶 Da 25 €, decidi alla fine</span></div>
+      <p class="lead-p">Rispondi a poche domande e scopri come sarà la canzone di tuo figlio.</p>
     </div>
   </section>
 
-  <footer>
-    <div class="wrap">
-      <nav><a href="privacy.html">Privacy e cookie</a><a href="mailto:ciao@ildonodellenote.it" id="footMail">Contatti</a></nav>
-      <div>© <span id="year">2026</span> Il Dono delle Note · ildonodellenote.it</div>
-    </div>
-  </footer>
+  <!-- Un solo bottone: su telefono resta in basso mentre scorri e si ferma qui, alla fine della pagina -->
+  <div class="dock" id="dock"><button class="btn" type="button" data-start>Crea la sua canzone <span class="arr">→</span></button></div>
+  <div class="btn-note dock-note" id="dockNote"><span><svg class="ic-ck" aria-hidden="true"><use href="#i-check"/></svg>Quiz di 2 minuti, gratis</span><span><svg class="ic-ck" aria-hidden="true"><use href="#i-check"/></svg>Vedi il prezzo prima di decidere: da 25 €</span></div>
+  </div>
 
-  <div class="sticky-cta" id="stickyCta"><button class="btn" type="button" data-start>Crea la sua canzone · 2 min <span class="arr">→</span></button></div>
+  <footer class="site-foot">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="/" aria-label="Il Dono delle Note"><img src="favicon.svg" alt="">Il Dono delle Note</a>
+        <p>Canzoni scritte su misura da regalare ai propri figli. Il testo lo approvi tu, prima che diventi musica.</p>
+      </div>
+      <div>
+        <h3>Contatti</h3>
+        <ul class="foot-list">
+          <li id="footWaItem" hidden><a id="footWa" href="#" target="_blank" rel="noopener">Scrivici su WhatsApp</a></li>
+          <li><a id="footMail" href="mailto:ciao@ildonodellenote.it">ciao@ildonodellenote.it</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pagamenti</h3>
+        <ul class="foot-list"><li>Pagamento sicuro con Stripe</li><li>Carta, Apple Pay, Google Pay</li></ul>
+      </div>
+      <div>
+        <h3>Informazioni</h3>
+        <ul class="foot-list"><li><a href="#come-funziona">Come funziona</a></li><li><a href="#faq">Domande frequenti</a></li><li><a href="privacy.html">Privacy e cookie</a></li></ul>
+      </div>
+    </div>
+    <div class="wrap foot-legal"><span>© <span id="year">2026</span> Il Dono delle Note · ildonodellenote.it</span><span id="legalInfo" hidden></span></div>
+  </footer>
 </div>
 
 <!-- ============ QUIZ ============ -->
@@ -449,9 +479,16 @@ var store = {
 };
 var capName = function(s){ return String(s || '').trim().replace(/\s+/g, ' ').replace(/(^|[\s'’-])(\p{L})/gu, function(m, a, b){ return a + b.toUpperCase(); }).replace(/ E /g, ' e '); };
 var ICON_CK = '<svg><use href="#i-check"/></svg>';
+var ICON_NOTE = '<svg class="ic-ck" aria-hidden="true"><use href="#i-check"/></svg>';
 
 $('#year').textContent = new Date().getFullYear();
 $('#footMail').href = 'mailto:' + C.contactEmail;
+$('#footMail').textContent = C.contactEmail;
+if (C.whatsapp) {
+  $('#footWa').href = 'https://wa.me/' + String(C.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Ciao! Ho una domanda su Il Dono delle Note');
+  $('#footWaItem').hidden = false;
+}
+if (C.legalInfo) { $('#legalInfo').textContent = C.legalInfo; $('#legalInfo').hidden = false; }
 
 /* ---------- source / UTM ---------- */
 (function(){
@@ -537,12 +574,9 @@ if (C.heroVideo) {
   }
 }
 
-/* ---------- sticky CTA ---------- */
+/* ---------- bottone in basso: quando la nota sotto di lui entra nello schermo, è arrivato al suo posto ---------- */
 if ('IntersectionObserver' in window) {
-  var sticky = $('#stickyCta'), heroVis = true, finalVis = false;
-  var upd = function(){ sticky.classList.toggle('show', !heroVis && !finalVis); };
-  new IntersectionObserver(function(es){ heroVis = es[0].isIntersecting; upd(); }).observe($('#heroBtn'));
-  new IntersectionObserver(function(es){ finalVis = es[0].isIntersecting; upd(); }).observe($('.final'));
+  new IntersectionObserver(function(es){ $('#dock').classList.toggle('parked', es[0].isIntersecting); }).observe($('#dockNote'));
 }
 
 /* =====================================================
@@ -918,7 +952,7 @@ function showLead(){
       '<p class="q-hint warn" id="leadErr" role="alert"></p>' +
       '<ol class="lead-next"><li><b>Adesso</b> vedi il riepilogo e il prezzo: in questo passaggio non paghi nulla.</li><li><b>Se ordini</b>, entro 24 ore ricevi il testo su WhatsApp da approvare.</li><li><b>Poi</b> la canzone: in circa una settimana, o in 48 ore con la consegna prioritaria.</li></ol>' +
       '<button class="btn" type="submit">Vedi il riepilogo e i prezzi <span class="arr">→</span></button>' +
-      '<div class="btn-note"><span>🔒 I tuoi dati sono al sicuro</span><span>Niente spam, promesso</span></div>' +
+      '<div class="btn-note"><span>' + ICON_NOTE + 'I tuoi dati sono al sicuro</span><span>' + ICON_NOTE + 'Niente spam</span></div>' +
     '</form>';
   animateIn(false);
   foot.hidden = true;
@@ -1018,7 +1052,7 @@ function showResult(){
       }).join('') + '</div>' +
       '<label class="bump"><input type="checkbox" id="express"' + (express ? ' checked' : '') + '><span><b>⚡ Consegna prioritaria in 48 ore: <span style="white-space:nowrap">+' + euro(EXPRESS_PRICE) + '</span></b>Il tuo ordine passa in cima alla lista: testo e canzone in 48 ore invece che in circa una settimana.</span></label>' +
       '<div style="margin-top:16px"><button class="btn" id="buyBtn" type="button"></button>' +
-      '<div class="pay-note"><span>🔒 Pagamento sicuro</span><span>💳 Carta, Apple Pay, Google Pay</span></div>' +
+      '<div class="pay-note"><span>' + ICON_NOTE + 'Pagamento sicuro con Stripe</span><span>' + ICON_NOTE + 'Carta, Apple Pay, Google Pay</span></div>' +
       '<div id="payMsg"></div>' +
       '<div class="mini-guar"><svg class="seal" aria-hidden="true"><use href="#i-seal"/></svg><span><b>Garanzia Emozione:</b> approvi il testo prima della registrazione. Se la canzone non ti emoziona la riscriviamo gratis, oppure ti rimborsiamo.</span></div></div></div>' +
     '</div>';
