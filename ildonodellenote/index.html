@@ -230,10 +230,38 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 
 /* loading */
 .loading{text-align:center;padding-top:30px}
-.loader{width:92px;height:92px;margin:0 auto 22px;position:relative}
-.loader .vinyl{width:92px;height:92px;animation-duration:1.6s}
-.loader .vinyl span{width:30px;height:30px}
-.checklist{list-style:none;padding:0;margin:24px auto 0;max-width:330px;text-align:left}
+.loading-studio{padding-top:4px}
+/* giradischi: l'etichetta con il nome e il puntino rendono visibile la rotazione */
+.studio{position:relative;height:214px;margin:0 -18px;overflow:hidden;display:grid;place-items:center}
+.deck{position:relative;width:166px;height:166px}
+.deck::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(210,85,63,.22),rgba(210,85,63,0) 68%);animation:glow 1.8s ease-in-out infinite}
+.record{position:absolute;inset:8px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#1b1424 0 2px,#2a2036 2px 4px);box-shadow:0 14px 30px -10px rgba(46,35,64,.55);animation:spin 1.8s linear infinite}
+.deck::after{content:"";position:absolute;inset:8px;border-radius:50%;pointer-events:none;background:conic-gradient(from 300deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.16) 25deg,rgba(255,255,255,0) 55deg,rgba(255,255,255,0) 180deg,rgba(255,255,255,.1) 205deg,rgba(255,255,255,0) 235deg)}
+.rec-label{position:absolute;inset:29%;border-radius:50%;background:var(--accent);border:3px solid #FFD9A0;display:grid;place-items:center;overflow:hidden}
+.rec-label span{font:700 8px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:#fff;max-width:84%;overflow:hidden;white-space:nowrap}
+.rec-label::before{content:"";position:absolute;top:9%;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:#FFD9A0}
+.arm{position:absolute;top:-6px;right:-10px;width:9px;height:104px;border-radius:6px;background:linear-gradient(90deg,#B9AEC6,#E9E3EF 50%,#A79BB5);transform-origin:50% 9px;transform:rotate(34deg);transition:transform .9s cubic-bezier(.3,1.35,.5,1) .15s;z-index:2}
+.arm::before{content:"";position:absolute;top:-6px;left:-6px;width:21px;height:21px;border-radius:50%;background:var(--plum);box-shadow:inset 0 0 0 5px #6B4A87}
+.arm::after{content:"";position:absolute;bottom:-8px;left:-4px;width:17px;height:20px;border-radius:4px;background:var(--plum)}
+.deck.on .arm{transform:rotate(14deg)}
+.fly-note{position:absolute;left:50%;top:50%;font-size:24px;line-height:1;opacity:0;animation:noteUp 2.4s ease-out infinite;pointer-events:none}
+@keyframes noteUp{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}15%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) translate(var(--dx),-128px) rotate(var(--r)) scale(1.15)}}
+@keyframes glow{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+/* le parole delle risposte arrivano attorno al disco e ci finiscono dentro */
+.wchip{position:absolute;left:50%;top:50%;z-index:3;white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 18px -10px rgba(46,35,64,.45);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;color:var(--ink);opacity:0;animation:absorb 2s cubic-bezier(.5,0,.3,1) forwards}
+.wchip.name{background:var(--plum);color:#fff;border-color:var(--plum)}
+@keyframes absorb{0%{opacity:0;transform:translate(-50%,-50%) translate(var(--x),var(--y)) scale(.7)}18%{opacity:1;transform:translate(-50%,-50%) translate(var(--x),var(--y)) scale(1)}60%{opacity:1;transform:translate(-50%,-50%) translate(var(--x),var(--y)) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+.eq-load{display:flex;gap:4px;height:26px;align-items:center;justify-content:center;margin:0 0 8px}
+.eq-load i{width:5px;height:30%;border-radius:3px;background:linear-gradient(var(--accent),var(--gold));animation:eq 1s ease-in-out infinite}
+.eq-load i:nth-child(2n){animation-delay:-.3s}.eq-load i:nth-child(3n){animation-delay:-.6s}.eq-load i:nth-child(5n){animation-delay:-.15s}
+.loading-studio .q-title{font-size:clamp(22px,5.8vw,28px);margin-bottom:12px}
+.ld-title{display:inline-block;min-height:54px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 16px 10px;margin-bottom:4px}
+.ld-title .lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-d)}
+.typed{margin:2px 0 0;font-family:var(--serif);font-size:19px;color:var(--plum)}
+.typed::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:var(--accent);animation:blink .8s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.checklist{list-style:none;padding:0;margin:12px auto 0;max-width:330px;text-align:left}
+.loading-studio .checklist li{padding:6px 0}
 .checklist li{display:flex;gap:11px;align-items:center;padding:9px 0;color:var(--muted);transition:color .3s}
 .checklist li .d{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:all .3s}
 .checklist li .d svg{width:13px;height:13px;color:#fff;opacity:0}
@@ -754,6 +782,7 @@ $$('[data-start]').forEach(function(b){ b.addEventListener('click', openQuiz); }
 
 function setProgress(i, total, label){
   $('#qProg').style.visibility = '';
+  $('#qBar').style.transition = '';
   $('#qBar').style.width = Math.round((i / total) * 100) + '%';
   $('#qCount').textContent = label;
 }
@@ -906,24 +935,62 @@ window.addEventListener('popstate', function(e){
 function showLoading(){
   phase = 'loading';
   foot.hidden = true;
-  setProgress(1, 1, 'Ci siamo quasi…');
-  var items = [
+  var STEP = 900, items = [
     'Leggiamo le tue risposte',
     'Scegliamo la melodia adatta a ' + N(),
     'Segniamo i dettagli da mettere nel testo',
     'Prepariamo il tuo riepilogo'
-  ];
-  body.innerHTML = '<div class="loading"><div class="loader"><div class="vinyl"><span></span></div></div>' +
-    '<h2 class="q-title">Ci siamo quasi… stiamo preparando tutto per la canzone di ' + esc(N()) + '</h2>' +
+  ], total = STEP * items.length + 700;
+  // la barra in alto si riempie durante l'attesa
+  setProgress(0, 1, 'Ci siamo quasi…');
+  var bar = $('#qBar');
+  bar.style.transition = 'none'; bar.style.width = '0%'; void bar.offsetWidth;
+  bar.style.transition = 'width ' + total + 'ms linear'; bar.style.width = '100%';
+
+  // le parole che la mamma ha scelto, da far "entrare" nel disco
+  var words = [];
+  if (A.name && A.name.trim()) words.push({t: capName(A.name), name: true});
+  if (A.nick && A.nick.trim()) words.push({t: capName(A.nick)});
+  words = words.concat(listOf('traits').map(function(t){ return {t: t}; }), listOf('loves').map(function(t){ return {t: t}; }));
+  if (A.lovesOther && A.lovesOther.trim()) words.push({t: A.lovesOther.trim()});
+  if (A.occasion) words.push({t: labelOf('occasion', A.occasion)});
+  if (A.style) words.push({t: labelOf('style', A.style)});
+  words = words.slice(0, 7);
+  var SLOTS = [[-92,-92],[92,-84],[-104,-4],[104,6],[-84,88],[90,94],[0,-104]];
+  var label = (A.name && A.name.trim() ? capName(A.name) : 'La tua canzone').split(/\s+e\s+|,/)[0];
+
+  body.innerHTML = '<div class="loading loading-studio">' +
+    '<div class="studio" aria-hidden="true">' +
+      '<div class="deck" id="deck"><div class="record"><div class="rec-label"><span>' + esc(label) + '</span></div></div><div class="arm"></div>' +
+        '<span class="fly-note" style="--dx:-70px;--r:-25deg;color:var(--plum-2)">♪</span>' +
+        '<span class="fly-note" style="--dx:64px;--r:20deg;color:var(--accent);animation-delay:.6s">♫</span>' +
+        '<span class="fly-note" style="--dx:-24px;--r:-10deg;color:var(--gold);animation-delay:1.2s">♩</span>' +
+        '<span class="fly-note" style="--dx:96px;--r:30deg;color:var(--plum-2);animation-delay:1.8s">♬</span>' +
+      '</div>' +
+      words.map(function(w, i){ var sl = SLOTS[i % SLOTS.length];
+        return '<span class="wchip' + (w.name ? ' name' : '') + '" style="--x:' + sl[0] + 'px;--y:' + sl[1] + 'px;animation-delay:' + (150 + i * 420) + 'ms">' + esc(w.t) + '</span>'; }).join('') +
+    '</div>' +
+    '<div class="eq-load" aria-hidden="true">' + new Array(17).join('<i></i>') + '</div>' +
+    '<h2 class="q-title">Ci siamo quasi: prepariamo la canzone di ' + esc(N()) + '</h2>' +
+    '<div class="ld-title"><span class="lbl">Titolo provvisorio</span><p class="typed" id="ldType"></p></div>' +
     '<ul class="checklist">' + items.map(function(t){ return '<li><span class="d">' + ICON_CK + '</span>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
   animateIn(false);
-  var lis = $$('.checklist li', body);
-  lis.forEach(function(li, i){ setTimeout(function(){ if (phase === 'loading') li.classList.add('on'); }, 650 * (i + 1)); });
+  setTimeout(function(){ var d = $('#deck'); if (d) d.classList.add('on'); }, 60);
+
+  // il titolo provvisorio si scrive lettera per lettera
+  var full = '« ' + songTitle() + ' »', k = 0, typeEl = $('#ldType');
+  setTimeout(function typeNext(){
+    if (phase !== 'loading' || !typeEl.isConnected) return;
+    typeEl.textContent = full.slice(0, ++k);
+    if (k < full.length) setTimeout(typeNext, 55);
+  }, 1100);
+
+  $$('.checklist li', body).forEach(function(li, i){ setTimeout(function(){ if (phase === 'loading') li.classList.add('on'); }, STEP * (i + 1)); });
   setTimeout(function(){
     if (phase !== 'loading') return;
     history.pushState({v:'lead'}, '');
     showLead();
-  }, 650 * items.length + 600);
+  }, total);
   track('trackCustom', 'QuizComplete');
 }
 
