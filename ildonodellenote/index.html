@@ -53,9 +53,26 @@ button{font:inherit;color:inherit}
 .hero-grid{display:grid;gap:18px;grid-template-areas:"copy" "cta" "media"}
 .hero-copy{grid-area:copy}.hero-media{grid-area:media}.hero-cta{grid-area:cta}
 @media (min-width:920px){
-  .hero{padding:36px 0 80px}
-  .hero-grid{grid-template-columns:1.08fr .92fr;grid-template-areas:"copy media" "cta media";column-gap:60px;row-gap:22px;align-items:start}
+  /* due colonne bilanciate: testo e bottone a sinistra, card della canzone grande e centrata a destra */
+  .hero{padding:56px 0 88px}
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr auto;grid-template-areas:"copy media" "cta media";column-gap:72px;row-gap:30px}
   .hero-copy{align-self:end}
+  .hero-cta{align-self:start}
+  .hero-media{align-self:center}
+  .hero h1{font-size:clamp(40px,3.7vw,54px);margin-bottom:20px}
+  .hero .sub{font-size:19.5px;line-height:1.6}
+  .hero .guarantee-pill{margin-top:24px}
+  .hero .stage{max-width:540px;padding:20px 10px 26px}
+  .hero .songcard{padding:34px 34px 28px;border-radius:30px}
+  .hero .songcard .vinyl{width:100px;height:100px}
+  .hero .songcard .vinyl span{width:36px;height:36px}
+  .hero .sc-title{font-size:32px}
+  .hero .sc-meta{font-size:14.5px}
+  .hero .lyrics{font-size:21.5px;padding:22px 24px;margin:26px 0 24px}
+  .hero .wave{height:50px}
+  .hero .play{width:52px;height:52px}
+  .hero .sc-foot{font-size:14px;margin-top:20px}
+  .hero .float-note{font-size:30px}
 }
 .eyebrow{display:inline-flex;gap:7px;align-items:center;background:var(--blush);color:var(--accent-d);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px}
 h1{font-family:var(--serif);font-weight:600;font-size:clamp(29px,7.6vw,54px);line-height:1.07;letter-spacing:-.022em;margin:6px 0 12px;text-wrap:balance}
