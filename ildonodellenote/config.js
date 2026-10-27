@@ -39,7 +39,7 @@ window.DDN_CONFIG = {
 
   // Numero WhatsApp del negozio, solo cifre con prefisso (es. '393331234567').
   // Compare in fondo alla landing e nella pagina di conferma come "Scrivici su WhatsApp".
-  whatsapp: '',
+  whatsapp: '393780946643',
 
   // Dati dell'attività mostrati in fondo alla pagina (obbligatori per legge su un sito
   // che vende): ragione sociale o nome e cognome, e partita IVA.

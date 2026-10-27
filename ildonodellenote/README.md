@@ -113,7 +113,23 @@ Il modo più rapido: **Netlify** (gratis). *Add new site → Deploy manually* e 
 
 Per provarlo in locale: `cd ildonodellenote && python3 -m http.server` e apri `http://localhost:8000`.
 
-## 5. Da verificare prima di accendere le ads
+## 5. Ricerca su Google (SEO)
+
+Già fatto nel sito:
+- **Titolo e descrizione** con le parole che le persone cercano: *canzone personalizzata*, *nome di tuo figlio*, compleanno, Natale, battesimo, *ninna nanna*.
+- **Testo visibile** con le stesse parole (sottotitolo, footer, domanda frequente "Per quali occasioni va bene?").
+- **Dati strutturati** (JSON-LD): attività con contatti, prodotto con i prezzi veri (25–54 €), domande frequenti. Nessuna recensione finta.
+- `robots.txt`, `sitemap.xml`, pagina `404.html`, icona per iPhone (`apple-touch-icon.png`), anteprima per i link condivisi.
+- `netlify.toml`: intestazioni di sicurezza, cache delle immagini e documenti interni (README, COLLEGAMENTI) non raggiungibili dal sito.
+
+Da fare una volta sola (serve il tuo account Google):
+1. **Google Search Console** → *Aggiungi proprietà* → **Dominio** → `ildonodellenote.it`. Google ti dà un record **TXT**: aggiungilo su IONOS (Domini & SSL → DNS → Aggiungi record → TXT, host `@`).
+2. Nella Search Console → **Sitemap** → invia `https://ildonodellenote.it/sitemap.xml`.
+3. Controlla i dati strutturati con lo strumento *Test dei risultati multimediali* di Google.
+
+Una pagina di vendita singola si posiziona per poche ricerche. Per crescere su Google servono pagine dedicate alle ricerche più frequenti (ad esempio "ninna nanna personalizzata con il nome", "regalo per i 18 anni del figlio", "canzone per il battesimo"), da aggiungere più avanti.
+
+## 6. Da verificare prima di accendere le ads
 
 - [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
 - [ ] **Condizioni della Garanzia Emozione** (riscrittura gratuita + rimborso): scrivile anche nei termini di vendita.
