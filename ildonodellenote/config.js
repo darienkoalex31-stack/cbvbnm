@@ -9,7 +9,7 @@ window.DDN_CONFIG = {
 
   // ID di misurazione Google Analytics 4. Es. 'G-XXXXXXXXXX'
   // Serve a misurare avvio quiz, abbandoni domanda per domanda, contatti e acquisti.
-  ga4Id: '',
+  ga4Id: 'G-XVWQRNRRH7',
 
   // Webhook (Make) che riceve i dati del quiz come campi separati. Il campo "evento" vale:
   // "contatto" (modulo compilato), "ordine" (clic su Ordina) o "canzone_extra"
