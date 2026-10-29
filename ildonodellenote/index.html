@@ -600,7 +600,7 @@ track('track', 'ViewContent', {content_name: 'landing'});
 var WEBHOOK_FIELDS = ['evento', 'codice', 'nome', 'whatsapp', 'email', 'consenso_whatsapp', 'marketing',
   'per_chi', 'nome_bambino', 'soprannome', 'eta', 'occasione', 'da_parte_di', 'stile', 'voce',
   'caratteristiche', 'passioni', 'messaggi', 'ricordo', 'pacchetto', 'canzoni', 'consegna_48h', 'importo',
-  'canzone_n', 'di', 'fonte', 'campagna', 'annuncio', 'fbclid', 'pagina'];
+  'canzone_n', 'di', 'fonte', 'campagna', 'annuncio', 'fbclid', 'pagina', 'link_whatsapp', 'messaggio_whatsapp'];
 function sendWebhook(fields){
   if (!C.webhookUrl) return;
   var body = new URLSearchParams();
@@ -615,6 +615,33 @@ function answerFields(){
   var r = readableAnswers();
   return {per_chi: r.perChi, nome_bambino: capName(r.nome), soprannome: capName(r.soprannome), eta: r.eta, occasione: r.occasione, da_parte_di: r.daParteDi,
     stile: r.stile, voce: r.voce, caratteristiche: r.caratteristiche, passioni: r.passioni, messaggi: r.messaggi, ricordo: r.ricordo};
+}
+
+// Messaggi WhatsApp già pronti: Make li scrive nel foglio insieme al link che apre la chat con il
+// testo compilato. Si inviano a mano dall'app WhatsApp Business, quando si preferisce.
+function waLink(phone, text){
+  return 'https://wa.me/' + String(phone || '').replace(/\D/g, '') + '?text=' + encodeURIComponent(text);
+}
+function waMsgContatto(L){
+  return 'Ciao ' + L.parentName + '! 👋 Qui Il Dono delle Note.\n' +
+    'Ho letto il tuo quiz per ' + N() + ' 🎵 ci sono già tante belle idee per il testo.\n\n' +
+    'Ti è rimasto qualche dubbio prima di ordinare? Scrivimi pure qui, ti rispondo io.\n\n' +
+    'Se non vuoi ricevere altri messaggi, rispondi STOP.';
+}
+function waMsgOrdine(L, p, express, value){
+  var pl = p.songs > 1, done = store.get('ddn_extra_done') || [], altre = '';
+  for (var n = 2; n <= p.songs; n++) {
+    if (done.indexOf(L.id + '_' + n) < 0) altre += '\nCanzone ' + n + ': ' + location.origin + location.pathname + '?canzone=' + n + '&di=' + p.songs + '&ordine=' + encodeURIComponent(L.id);
+  }
+  return 'Ciao ' + L.parentName + '! 👋 Qui Il Dono delle Note.\n' +
+    (pl ? 'Grazie per il tuo ordine!' : 'Grazie per aver scelto la canzone per ' + N() + '!') + ' 🎵\n\n' +
+    'Riepilogo: ' + p.name + (express ? ', consegna in 48 ore' : '') + ' · ' + euro(value) + '\n' +
+    'Codice: ' + L.id + '\n\n' +
+    'Come proseguiamo:\n' +
+    '1. Ti mando qui i dettagli per il pagamento\n' +
+    '2. Entro 24 ore dal pagamento ricevi qui ' + (pl ? 'i testi' : 'il testo') + ' da leggere e approvare\n' +
+    '3. Dopo la tua approvazione, ' + (pl ? 'le canzoni sono pronte' : 'la canzone è pronta') + (express ? ' in 48 ore' : ' in circa 7 giorni') +
+    (altre ? '\n\nSe non l’hai già fatto, raccontaci le altre canzoni qui (2 minuti ciascuna):' + altre : '');
 }
 
 /* ---------- hero: video / audio / nomi a rotazione ---------- */
@@ -1084,7 +1111,8 @@ function showLead(){
     var src = store.get('ddn_src') || {};
     sendWebhook(Object.assign({evento: 'contatto', codice: lead.id, nome: lead.parentName, whatsapp: lead.phone, email: lead.email,
       consenso_whatsapp: true, marketing: lead.marketing}, answerFields(),
-      {fonte: src.utm_source || '', campagna: src.utm_campaign || '', annuncio: src.utm_content || '', fbclid: src.fbclid || '', pagina: location.href}));
+      {fonte: src.utm_source || '', campagna: src.utm_campaign || '', annuncio: src.utm_content || '', fbclid: src.fbclid || '', pagina: location.href},
+      {link_whatsapp: waLink(lead.phone, waMsgContatto(lead)), messaggio_whatsapp: waMsgContatto(lead)}));
     track('track', 'Lead', {content_name: 'quiz'});
     history.pushState({v:'res'}, '');
     showResult();
@@ -1191,7 +1219,9 @@ function showResult(){
     var p = pkg(), value = total(), name = p.name + (express ? ' + consegna 48h' : '');
     store.set('ddn_order', {pkg: p.id, songs: p.songs, express: express, value: value, leadId: L.id});
     track('track', 'InitiateCheckout', {value: value, currency: 'EUR', content_name: name, num_items: p.songs});
-    sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value});
+    var msg = waMsgOrdine(L, p, express, value);
+    sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value,
+      link_whatsapp: waLink(L.phone, msg), messaggio_whatsapp: msg});
     var link = (C.paymentLinks || {})[p.id + (express ? '_express' : '')];
     if (link) {
       try {
