@@ -94,7 +94,7 @@ Le canzoni in più si usano per i fratelli, un nipote o un'altra occasione. **Co
 1. La mamma fa **un solo quiz** (per la prima canzone), sceglie il pacchetto e paga: niente domande in più prima del pagamento.
 2. Nella pagina `grazie.html` trova **"Hai scelto 2 canzoni"** con un bottone per ogni canzone in più ("Racconta la canzone 2 →").
 3. Il bottone riapre il quiz in modalità *canzone in più* (`index.html?canzone=2&di=3&ordine=DDN-XXXX`): stesse domande, con in più "Mio nipote / Mia nipote o figlioccio/a", senza modulo contatti né prezzi.
-4. Alla fine il webhook riceve l'evento `extra_song` con lo stesso codice ordine e il numero della canzone, così in Google Sheets le risposte stanno accanto all'ordine.
+4. Alla fine il webhook riceve l'evento `canzone_extra` con lo stesso codice ordine e il numero della canzone, così in Google Sheets le risposte stanno accanto all'ordine.
 5. Se la mamma chiude prima di finire, può riprendere più tardi dalla pagina di conferma; se ha pagato da un altro telefono, la pagina le dice che le scriverete voi su WhatsApp.
 
 ---

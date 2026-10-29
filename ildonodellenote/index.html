@@ -594,11 +594,22 @@ if (C.pixelId || C.ga4Id) {
 }
 track('track', 'ViewContent', {content_name: 'landing'});
 
-function sendWebhook(payload){
+// I dati partono come modulo (campi separati con nomi in italiano): Make li legge già divisi,
+// pronti da abbinare alle colonne del foglio Google.
+function sendWebhook(fields){
   if (!C.webhookUrl) return;
-  try {
-    fetch(C.webhookUrl, {method:'POST', mode:'no-cors', keepalive:true, headers:{'Content-Type':'text/plain;charset=UTF-8'}, body: JSON.stringify(payload)});
-  } catch(e){}
+  var body = new URLSearchParams();
+  body.append('data', new Date().toLocaleString('it-IT', {timeZone: 'Europe/Rome'}));
+  Object.keys(fields).forEach(function(k){
+    var v = fields[k];
+    body.append(k, v === true ? 'sì' : v === false ? 'no' : v == null ? '' : String(v));
+  });
+  try { fetch(C.webhookUrl, {method:'POST', mode:'no-cors', keepalive:true, body: body}).catch(function(){}); } catch(e){}
+}
+function answerFields(){
+  var r = readableAnswers();
+  return {per_chi: r.perChi, nome_bambino: capName(r.nome), soprannome: capName(r.soprannome), eta: r.eta, occasione: r.occasione, da_parte_di: r.daParteDi,
+    stile: r.stile, voce: r.voce, caratteristiche: r.caratteristiche, passioni: r.passioni, messaggi: r.messaggi, ricordo: r.ricordo};
 }
 
 /* ---------- hero: video / audio / nomi a rotazione ---------- */
@@ -937,7 +948,7 @@ function showExtraDone(){
   var done = store.get('ddn_extra_done') || [], key = EXTRA.id + '_' + EXTRA.n;
   if (done.indexOf(key) < 0) {
     done.push(key); store.set('ddn_extra_done', done);
-    sendWebhook({event:'extra_song', leadId: EXTRA.id, song: EXTRA.n, of: EXTRA.tot, answers: readableAnswers(), raw: A, createdAt: new Date().toISOString()});
+    sendWebhook(Object.assign({evento: 'canzone_extra', codice: EXTRA.id, canzone_n: EXTRA.n, di: EXTRA.tot}, answerFields()));
     track('trackCustom', 'ExtraSongComplete');
   }
   var more = extraLinks(EXTRA.id, EXTRA.tot);
@@ -1065,7 +1076,10 @@ function showLead(){
       privacy: true, marketing: $('#l_mkt').checked
     });
     store.set('ddn_lead', lead);
-    sendWebhook({event:'lead', leadId: lead.id, createdAt: new Date().toISOString(), contact: {name: lead.parentName, email: lead.email, phone: lead.phone, marketing: lead.marketing}, consent: {whatsapp: true, marketing: lead.marketing, at: new Date().toISOString()}, answers: readableAnswers(), raw: A, source: store.get('ddn_src'), page: location.href});
+    var src = store.get('ddn_src') || {};
+    sendWebhook(Object.assign({evento: 'contatto', codice: lead.id, nome: lead.parentName, whatsapp: lead.phone, email: lead.email,
+      consenso_whatsapp: true, marketing: lead.marketing}, answerFields(),
+      {fonte: src.utm_source || '', campagna: src.utm_campaign || '', annuncio: src.utm_content || '', fbclid: src.fbclid || '', pagina: location.href}));
     track('track', 'Lead', {content_name: 'quiz'});
     history.pushState({v:'res'}, '');
     showResult();
@@ -1172,7 +1186,7 @@ function showResult(){
     var p = pkg(), value = total(), name = p.name + (express ? ' + consegna 48h' : '');
     store.set('ddn_order', {pkg: p.id, songs: p.songs, express: express, value: value, leadId: L.id});
     track('track', 'InitiateCheckout', {value: value, currency: 'EUR', content_name: name, num_items: p.songs});
-    sendWebhook({event:'checkout_click', leadId: L.id, package: p.id, songs: p.songs, express: express, value: value, contact: {name: L.parentName, email: L.email, phone: L.phone}, createdAt: new Date().toISOString()});
+    sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value});
     var link = (C.paymentLinks || {})[p.id + (express ? '_express' : '')];
     if (link) {
       try {

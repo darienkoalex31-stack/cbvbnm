@@ -11,9 +11,9 @@ window.DDN_CONFIG = {
   // Serve a misurare avvio quiz, abbandoni domanda per domanda, contatti e acquisti.
   ga4Id: '',
 
-  // URL di un webhook che riceve i lead del quiz in JSON (Make, Zapier, n8n, Google Apps Script…).
-  // Riceve tre eventi: "lead" (dopo il form), "checkout_click" (quando sceglie un pacchetto)
-  // ed "extra_song" (risposte per la seconda o terza canzone).
+  // Webhook (Make) che riceve i dati del quiz come campi separati. Il campo "evento" vale:
+  // "contatto" (modulo compilato), "ordine" (clic su Ordina) o "canzone_extra"
+  // (risposte per la seconda o terza canzone).
   webhookUrl: 'https://hook.eu1.make.com/d3e7xpi86k4qonvv4srl9buqjer1ihjn',
 
   // Video nell'hero (MP4 verticale o quadrato, 15–30s). Se presente sostituisce la card animata.

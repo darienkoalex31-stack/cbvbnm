@@ -52,10 +52,10 @@ Il sito aggiunge da solo al link il **codice ordine** (`client_reference_id`, es
 
 | Cosa | Scelta |
 |---|---|
-| **Evento che lo fa partire** | Invio del modulo contatti alla fine del quiz (evento `lead` del webhook). |
+| **Evento che lo fa partire** | Invio del modulo contatti alla fine del quiz (campo `evento` = `contatto` del webhook). |
 | **Numero mittente** | Il numero WhatsApp del negozio, registrato sulla **WhatsApp Business Platform** (Cloud API di Meta). |
-| **Destinatario** | Il numero scritto nel modulo, obbligatorio. Il sito lo manda già in formato internazionale (`+393331234567`) in `contact.phone`. |
-| **Consenso** | Casella obbligatoria nel modulo: *"acconsento a ricevere su WhatsApp (ed email, se indicata) il riepilogo e gli aggiornamenti sul mio ordine. Posso smettere quando voglio rispondendo STOP."* Il webhook la invia come `consent.whatsapp: true` con data e ora (`consent.at`): salvatela nel foglio. |
+| **Destinatario** | Il numero scritto nel modulo, obbligatorio. Il sito lo manda già in formato internazionale (`+393331234567`) nel campo `whatsapp`. |
+| **Consenso** | Casella obbligatoria nel modulo: *"acconsento a ricevere su WhatsApp (ed email, se indicata) il riepilogo e gli aggiornamenti sul mio ordine. Posso smettere quando voglio rispondendo STOP."* Il webhook la invia nel campo `consenso_whatsapp` (`sì`) insieme alla `data`: salvateli nel foglio. |
 | **Stop ai messaggi** | Ogni messaggio finisce con "Rispondi STOP…". Chi risponde STOP viene segnato nel foglio e non riceve più messaggi (scenario C). |
 | **Piattaforma** | Make + modulo ufficiale **WhatsApp Business Cloud**, oppure un fornitore con interfaccia pronta (vedi sotto). |
 
@@ -86,23 +86,23 @@ Rispondi STOP per non ricevere altri messaggi.
 
 | Variabile | Dove la prendi nel webhook |
 |---|---|
-| `{{1}}` | `contact.name` (es. Giulia) |
-| `{{2}}` | `answers.nome`, oppure "tuo figlio" se è vuoto |
-| `{{3}}` | il Payment Link da 25 € + `?client_reference_id=` + `leadId` |
+| `{{1}}` | `nome` (es. Giulia) |
+| `{{2}}` | `nome_bambino`, oppure "tuo figlio" se è vuoto |
+| `{{3}}` | il Payment Link da 25 € + `?client_reference_id=` + `codice` |
 
 Il link nel messaggio porta direttamente a Stripe e non al sito. Chi arriva dagli annunci fa il quiz nel browser interno di Facebook o Instagram, mentre il link di WhatsApp si apre in un altro browser: lì le risposte salvate non ci sono. Il link Stripe con il codice ordine funziona ovunque.
 
 Un secondo modello, `ordine_ricevuto` (Utilità), per lo scenario B: *"Grazie {{1}}! Abbiamo ricevuto il tuo ordine {{2}}. Entro 24 ore, di solito in giornata, ti mandiamo qui il testo da approvare. Rispondi STOP per non ricevere altri messaggi."*
 
 ### Scenari Make
-Il sito invia il webhook come testo (`text/plain`). Se in Make i campi non compaiono separati, aggiungi subito dopo il webhook il modulo **JSON › Parse JSON**.
+Il sito invia i dati come modulo, con campi separati e nomi in italiano: `data`, `evento`, `codice`, `nome`, `whatsapp`, `email`, `consenso_whatsapp`, `marketing`, `per_chi`, `nome_bambino`, `soprannome`, `eta`, `occasione`, `da_parte_di`, `stile`, `voce`, `caratteristiche`, `passioni`, `messaggi`, `ricordo`, `fonte`, `campagna`, `annuncio`, `fbclid`, `pagina` (contatto); `pacchetto`, `canzoni`, `consegna_48h`, `importo` (ordine); `canzone_n`, `di` (canzone extra).
 
 **A. Contatto dal quiz → foglio + primo messaggio**
 1. **Webhooks › Custom webhook**: copia l'indirizzo in `config.js` → `webhookUrl`.
-2. **Router** sul campo `event`: `lead`, `checkout_click`, `extra_song`.
-3. `lead` → **Google Sheets › Add a row**: codice, nome, telefono, email, consensi, risposte, UTM.
-4. `lead` → **WhatsApp Business Cloud › Send a Template Message**: destinatario `contact.phone`, modello `riepilogo_quiz`, variabili come sopra. Filtro: invia solo se `consent.whatsapp` è vero.
-5. `extra_song` → **Google Sheets › Add a row** in un foglio "canzoni in più", con lo stesso codice ordine.
+2. **Router** sul campo `evento`: `contatto`, `ordine`, `canzone_extra`.
+3. `contatto` → **Google Sheets › Add a row** nella scheda *Contatti*; `ordine` → scheda *Ordini*.
+4. `contatto` → **WhatsApp Business Cloud › Send a Template Message**: destinatario `whatsapp`, modello `riepilogo_quiz`, variabili come sopra. Filtro: invia solo se `consenso_whatsapp` è `sì`.
+5. `canzone_extra` → **Google Sheets › Add a row** nella scheda *Canzoni extra*, con lo stesso codice ordine.
 
 **B. Pagamento Stripe → foglio + conferma**
 1. **Stripe › Watch events**: evento `checkout.session.completed`.
