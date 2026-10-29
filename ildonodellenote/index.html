@@ -595,12 +595,17 @@ if (C.pixelId || C.ga4Id) {
 track('track', 'ViewContent', {content_name: 'landing'});
 
 // I dati partono come modulo (campi separati con nomi in italiano): Make li legge già divisi,
-// pronti da abbinare alle colonne del foglio Google.
+// pronti da abbinare alle colonne del foglio Google. Ogni invio contiene sempre tutti i campi
+// (vuoti se non servono a quell'evento), così Make li conosce tutti da un solo esempio.
+var WEBHOOK_FIELDS = ['evento', 'codice', 'nome', 'whatsapp', 'email', 'consenso_whatsapp', 'marketing',
+  'per_chi', 'nome_bambino', 'soprannome', 'eta', 'occasione', 'da_parte_di', 'stile', 'voce',
+  'caratteristiche', 'passioni', 'messaggi', 'ricordo', 'pacchetto', 'canzoni', 'consegna_48h', 'importo',
+  'canzone_n', 'di', 'fonte', 'campagna', 'annuncio', 'fbclid', 'pagina'];
 function sendWebhook(fields){
   if (!C.webhookUrl) return;
   var body = new URLSearchParams();
   body.append('data', new Date().toLocaleString('it-IT', {timeZone: 'Europe/Rome'}));
-  Object.keys(fields).forEach(function(k){
+  WEBHOOK_FIELDS.forEach(function(k){
     var v = fields[k];
     body.append(k, v === true ? 'sì' : v === false ? 'no' : v == null ? '' : String(v));
   });

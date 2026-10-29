@@ -95,7 +95,7 @@ Il link nel messaggio porta direttamente a Stripe e non al sito. Chi arriva dagl
 Un secondo modello, `ordine_ricevuto` (Utilità), per lo scenario B: *"Grazie {{1}}! Abbiamo ricevuto il tuo ordine {{2}}. Entro 24 ore, di solito in giornata, ti mandiamo qui il testo da approvare. Rispondi STOP per non ricevere altri messaggi."*
 
 ### Scenari Make
-Il sito invia i dati come modulo, con campi separati e nomi in italiano: `data`, `evento`, `codice`, `nome`, `whatsapp`, `email`, `consenso_whatsapp`, `marketing`, `per_chi`, `nome_bambino`, `soprannome`, `eta`, `occasione`, `da_parte_di`, `stile`, `voce`, `caratteristiche`, `passioni`, `messaggi`, `ricordo`, `fonte`, `campagna`, `annuncio`, `fbclid`, `pagina` (contatto); `pacchetto`, `canzoni`, `consegna_48h`, `importo` (ordine); `canzone_n`, `di` (canzone extra).
+Il sito invia i dati come modulo, con campi separati e nomi in italiano: `data`, `evento`, `codice`, `nome`, `whatsapp`, `email`, `consenso_whatsapp`, `marketing`, `per_chi`, `nome_bambino`, `soprannome`, `eta`, `occasione`, `da_parte_di`, `stile`, `voce`, `caratteristiche`, `passioni`, `messaggi`, `ricordo`, `fonte`, `campagna`, `annuncio`, `fbclid`, `pagina` (contatto); `pacchetto`, `canzoni`, `consegna_48h`, `importo` (ordine); `canzone_n`, `di` (canzone extra). Ogni invio contiene sempre tutti i campi (vuoti quando non servono a quell'evento): basta un solo esempio per farli conoscere tutti a Make.
 
 **A. Contatto dal quiz → foglio + primo messaggio**
 1. **Webhooks › Custom webhook**: copia l'indirizzo in `config.js` → `webhookUrl`.
