@@ -151,3 +151,79 @@ Inserisci in `config.js` l'ID del **Meta Pixel** (`pixelId`) e di **Google Analy
 4. Paga con un Payment Link in **modalità test** di Stripe (carta `4242 4242 4242 4242`): devi tornare su `grazie.html`, la riga nel foglio deve diventare "pagato" e deve arrivare `ordine_ricevuto`.
 5. Ripeti con "2 canzoni": in `grazie.html` deve comparire "Racconta la canzone 2", e il quiz della seconda canzone deve arrivare nel foglio con lo stesso codice.
 6. Rispondi STOP al messaggio: la riga deve risultare `whatsapp_stop = sì`.
+
+---
+
+## 5. Risposte rapide WhatsApp Business
+
+Si salvano nell'app (*Impostazioni → Strumenti per l'azienda → Risposte rapide → +*) e in chat si richiamano scrivendo `/` e la scorciatoia. Sono scritte senza nomi da sostituire, così si inviano senza modifiche. Il primo messaggio (contatto o ordine) è già pronto nel foglio Google, colonna *Scrivi su WhatsApp*.
+
+| Scorciatoia | Quando |
+|---|---|
+| `/testo` | Dopo il pagamento, entro 24 ore: prima incolla il testo della canzone in un messaggio, poi invia questa. |
+| `/promemoria` | Se dopo 24 ore non ha risposto sul testo. |
+| `/modifiche` | Quando chiede di cambiare qualcosa nel testo. |
+| `/approvato` | Quando risponde OK al testo. |
+| `/consegna` | Alla consegna: invia questa e subito dopo il file MP3. |
+| `/reazione` | Qualche giorno dopo l'occasione del regalo. |
+| `/ricontatto` | Una volta sola, 1–2 giorni dopo il primo messaggio, a chi non ha ordinato e non ha risposto. |
+| `/stop` | Quando scrive STOP: poi scrivi *STOP* nella colonna *Stato* del foglio e non riscriverle più. |
+
+Manca `/pagamento`: si scrive quando è deciso come si paga (finché Stripe non è collegato, la FAQ *Come pago?* del sito va aggiornata).
+
+**/testo**
+```
+Qui sopra trovi il testo della tua canzone 🎵
+Leggilo con calma, magari ad alta voce 💛
+
+• Se ti piace così, rispondi OK e passiamo alla musica.
+• Se vuoi cambiare qualcosa (una parola, un soprannome, un ricordo da aggiungere), scrivimi cosa e lo sistemo.
+
+Dimmi anche che voce preferisci: femminile, maschile o un duetto. Se non hai preferenze, scegliamo noi quella più adatta.
+```
+
+**/promemoria**
+```
+Ciao! 😊 Hai avuto modo di leggere il testo della canzone?
+Appena mi dai l'OK passiamo alla musica: i tempi di consegna partono da lì. Se vuoi cambiare qualcosa, scrivimi pure.
+```
+
+**/modifiche**
+```
+Grazie, perfetto! ✍️ Sistemo il testo e te lo rimando qui entro 24 ore.
+Ti ricordo che i tempi di consegna partono dall'approvazione del testo finale: ogni modifica sposta un po' la data di consegna.
+```
+
+**/approvato**
+```
+Testo approvato ✅ Grazie!
+Ora passiamo alla musica 🎶 La canzone arriva qui su WhatsApp entro circa 7 giorni, oppure entro 48 ore se hai scelto la consegna prioritaria.
+```
+
+**/consegna**
+```
+Eccola! 🎁 La tua canzone è pronta: trovi qui sotto il file MP3.
+
+Un consiglio per il momento del regalo: fagliela ascoltare a sorpresa e tieni il telefono pronto per riprendere la reazione 💛
+
+Se non ti emoziona come speravi, dimmelo: con la Garanzia Emozione la riscriviamo gratis, oppure ti rimborsiamo.
+```
+
+**/reazione**
+```
+Ciao! 😊 Com'è andato il momento della canzone?
+Ci farebbe tantissimo piacere saperlo. E se hai ripreso la reazione, mandacela pure: per noi è il regalo più bello 💛
+Non pubblichiamo mai niente senza il tuo permesso scritto.
+```
+
+**/ricontatto**
+```
+Ciao! 😊 Ti scrivo solo per sapere se ti va ancora di regalare la canzone.
+Se hai dubbi su prezzo, tempi o come funziona, chiedimi pure: ti rispondo volentieri.
+```
+
+**/stop**
+```
+Ricevuto, non riceverai altri messaggi da noi 🙏
+Se un giorno vorrai regalare una canzone, ci trovi qui 💛
+```
