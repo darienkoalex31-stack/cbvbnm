@@ -14,7 +14,7 @@ window.DDN_CONFIG = {
   // URL di un webhook che riceve i lead del quiz in JSON (Make, Zapier, n8n, Google Apps Script…).
   // Riceve tre eventi: "lead" (dopo il form), "checkout_click" (quando sceglie un pacchetto)
   // ed "extra_song" (risposte per la seconda o terza canzone).
-  webhookUrl: 'https://hook.eu1.make.com/5mh7n47jyjjtnejlvpppxq8fs46vmel7',
+  webhookUrl: 'https://hook.eu1.make.com/d3e7xpi86k4qonvv4srl9buqjer1ihjn',
 
   // Video nell'hero (MP4 verticale o quadrato, 15–30s). Se presente sostituisce la card animata.
   heroVideo: '',
