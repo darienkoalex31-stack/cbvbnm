@@ -57,7 +57,7 @@ window.DDN_CONFIG = {
   // Dati dell'attività mostrati in fondo alla pagina (obbligatori per legge su un sito
   // che vende): ragione sociale o nome e cognome, e partita IVA.
   // Es. 'Il Dono delle Note di Mario Rossi · P.IVA 01234567890'
-  legalInfo: '',
+  legalInfo: 'Il Dono delle Note di Alex Darienko',
 
   contactEmail: 'ciao@ildonodellenote.it'
 };
