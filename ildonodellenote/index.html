@@ -526,6 +526,8 @@ textarea.inp{min-height:150px;resize:vertical;line-height:1.5}
 (function(){
 'use strict';
 var C = Object.assign({pixelId:'',webhookUrl:'',heroVideo:'',heroVideoPoster:'',sampleAudio:'',paymentLinks:{},contactEmail:'ciao@ildonodellenote.it'}, window.DDN_CONFIG || {});
+// Modalità prova (?prova=1 nell'indirizzo): usa i Payment Link di test di Stripe e non invia niente a Meta e Google.
+var PROVA = /[?&]prova=1(&|$)/.test(location.search);
 
 /* ---------- utils ---------- */
 var $ = function(s, el){ return (el || document).querySelector(s); };
@@ -588,7 +590,7 @@ function track(kind, name, params){
   if (pixelOn && window.fbq) fbq.apply(null, a); else evQueue.push(a);
   if (GA_NAMES[name]) ga(GA_NAMES[name], params);
 }
-if (C.pixelId || C.ga4Id) {
+if ((C.pixelId || C.ga4Id) && !PROVA) {
   var consent = store.get('ddn_consent');
   if (consent === 'yes') { loadPixel(); loadGA(); }
   else if (consent !== 'no') $('#cookie').hidden = false;
@@ -1225,7 +1227,7 @@ function showResult(){
     var msg = waMsgOrdine(L, p, express, value);
     sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value,
       link_whatsapp: waLink(L.phone, msg), messaggio_whatsapp: msg});
-    var link = (C.paymentLinks || {})[p.id + (express ? '_express' : '')];
+    var link = ((PROVA ? C.paymentLinksTest : C.paymentLinks) || {})[p.id + (express ? '_express' : '')];
     if (link) {
       try {
         var u = new URL(link);

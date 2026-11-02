@@ -17,6 +17,11 @@ Cosa serve per collegare il funnel ai servizi esterni. Nessuno di questi passagg
 
 Il sito è statico, quindi **bastano i Payment Link**: niente server, niente chiavi API.
 
+### Stato attuale
+
+- **Modalità prova (fatto):** nell'account Stripe *Sandbox di ildonodellenote* ci sono i 4 prodotti (1, 2, 3 canzoni e "Consegna prioritaria in 48 ore" da 5 € come seconda riga) e i 6 Payment Link di test, in `config.js` → `paymentLinksTest`. Il sito li usa **solo** aprendo `https://ildonodellenote.it/?prova=1`: niente banner cookie, niente eventi a Meta e Google, e dopo il pagamento si torna su `grazie.html?prova=1` (nessun Purchase registrato). Carta di prova `4242 4242 4242 4242`, scadenza futura, CVC qualsiasi.
+- **Modalità reale (da fare):** attivare l'account Stripe con i dati dell'attività, ricreare gli stessi prodotti e link in modalità reale con pagina di conferma `https://ildonodellenote.it/grazie.html` (senza `?prova=1`) e metterli in `paymentLinks`. Prima servono i termini e condizioni, da collegare al checkout.
+
 ### Cosa mi serve da te
 
 Solo **gli indirizzi dei Payment Link** (iniziano con `https://buy.stripe.com/...`). Sono pubblici, si possono incollare in chat o direttamente in `config.js`.

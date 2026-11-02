@@ -60,6 +60,8 @@ a{color:var(--plum)}
   if (C.contactEmail) { var m = document.getElementById('mail'); m.href = 'mailto:' + C.contactEmail; m.textContent = C.contactEmail; }
   if (C.whatsapp) { var wa = document.getElementById('wa'); wa.href = 'https://wa.me/' + String(C.whatsapp).replace(/\D/g, '') + '?text=' + encodeURIComponent('Ciao! Ho appena ordinato una canzone su Il Dono delle Note'); wa.hidden = false; }
   var order = get('ddn_order');
+  // Pagamento di prova (Stripe in modalità test): niente Purchase su Meta e Google
+  var prova = /[?&]prova=1(&|$)/.test(location.search);
   if (order && order.leadId) { document.getElementById('code').textContent = order.leadId; document.getElementById('codeLine').hidden = false; if (C.whatsapp) document.getElementById('wa').href += encodeURIComponent(' (codice ' + order.leadId + ')'); }
   // Pacchetti da 2 o 3 canzoni: link al quiz per ciascuna canzone in più
   var songs = (order && (order.songs || {due:2, tre:3}[order.pkg])) || parseInt(new URLSearchParams(location.search).get('canzoni'), 10) || 1;
@@ -80,7 +82,7 @@ a{color:var(--plum)}
     ex.hidden = false;
   }
   // Evento Purchase: solo con consenso cookie e una sola volta per ordine
-  if (C.ga4Id && get('ddn_consent') === 'yes' && order && !order.gaTracked) {
+  if (C.ga4Id && !prova && get('ddn_consent') === 'yes' && order && !order.gaTracked) {
     var sc = document.createElement('script'); sc.async = true; sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(C.ga4Id); document.head.appendChild(sc);
     window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
     gtag('js', new Date()); gtag('config', C.ga4Id);
@@ -88,7 +90,7 @@ a{color:var(--plum)}
     order.gaTracked = true;
     try { localStorage.setItem('ddn_order', JSON.stringify(order)); } catch(e){}
   }
-  if (C.pixelId && get('ddn_consent') === 'yes' && order && !order.tracked) {
+  if (C.pixelId && !prova && get('ddn_consent') === 'yes' && order && !order.tracked) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', C.pixelId);
     fbq('track', 'PageView');

@@ -38,6 +38,18 @@ window.DDN_CONFIG = {
     tre_express: ''     // 3 canzoni + 48 ore, 54 €
   },
 
+  // Payment Link di PROVA (Stripe in modalità test, nessun addebito vero): il sito li usa solo se
+  // l'indirizzo contiene ?prova=1, es. https://ildonodellenote.it/?prova=1 — le visitatrici normali
+  // non li vedono. Carta di prova: 4242 4242 4242 4242, scadenza futura, CVC qualsiasi.
+  paymentLinksTest: {
+    uno: 'https://buy.stripe.com/test_fZubJ00FefKb8mId5GbMQ00',
+    due: 'https://buy.stripe.com/test_cNi8wOfA8gOf7iE6HibMQ01',
+    tre: 'https://buy.stripe.com/test_7sYcN487G55x9qM1mYbMQ02',
+    uno_express: 'https://buy.stripe.com/test_5kQ00i5Zy55x9qM3v6bMQ03',
+    due_express: 'https://buy.stripe.com/test_eVq7sKafO41tauQ3v6bMQ04',
+    tre_express: 'https://buy.stripe.com/test_3cI3cu1Ji8hJ8mIaXybMQ05'
+  },
+
   // Numero WhatsApp del negozio, solo cifre con prefisso (es. '393331234567').
   // Compare in fondo alla landing e nella pagina di conferma come "Scrivici su WhatsApp".
   whatsapp: '393780946643',
