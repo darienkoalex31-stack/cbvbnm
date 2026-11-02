@@ -635,8 +635,15 @@ function waMsgContatto(L){
     'Ti è rimasto qualche dubbio prima di ordinare? Scrivimi pure qui, ti rispondo io.\n\n' +
     'Se non vuoi ricevere altri messaggi, rispondi STOP.';
 }
-function waMsgOrdine(L, p, express, value){
+// Con payUrl (pagamento online attivo) è il messaggio di recupero per chi ha cliccato Ordina senza
+// completare il pagamento; senza, è la conferma della richiesta da chiudere in chat.
+function waMsgOrdine(L, p, express, value, payUrl){
   var pl = p.songs > 1, done = store.get('ddn_extra_done') || [], altre = '';
+  if (payUrl) return 'Ciao ' + L.parentName + '! 👋 Qui Il Dono delle Note.\n' +
+    (pl ? 'Ho visto che stavi completando il tuo ordine' : 'Ho visto che stavi ordinando la canzone per ' + N()) + ' 🎵\n\n' +
+    'Riepilogo: ' + p.name + (express ? ', consegna in 48 ore' : '') + ' · ' + euro(value) + '\n\n' +
+    'Se vuoi completare l’ordine, ecco il link per il pagamento sicuro:\n' + payUrl + '\n\n' +
+    'Appena completi, entro 24 ore ricevi qui ' + (pl ? 'i testi' : 'il testo') + ' da approvare. Se hai un dubbio, scrivimi pure 😊';
   for (var n = 2; n <= p.songs; n++) {
     if (done.indexOf(L.id + '_' + n) < 0) altre += '\nCanzone ' + n + ': ' + location.origin + location.pathname + '?canzone=' + n + '&di=' + p.songs + '&ordine=' + encodeURIComponent(L.id);
   }
@@ -1228,19 +1235,19 @@ function showResult(){
     var p = pkg(), value = total(), name = p.name + (express ? ' + consegna 48h' : '');
     store.set('ddn_order', {pkg: p.id, songs: p.songs, express: express, value: value, leadId: L.id});
     track('track', 'InitiateCheckout', {value: value, currency: 'EUR', content_name: name, num_items: p.songs});
-    var msg = waMsgOrdine(L, p, express, value);
-    sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value,
-      link_whatsapp: waLink(L.phone, msg), messaggio_whatsapp: msg});
-    var link = ((PROVA ? C.paymentLinksTest : C.paymentLinks) || {})[p.id + (express ? '_express' : '')];
+    var link = ((PROVA ? C.paymentLinksTest : C.paymentLinks) || {})[p.id + (express ? '_express' : '')], payUrl = '';
     if (link) {
       try {
         var u = new URL(link);
         u.searchParams.set('client_reference_id', L.id);
         if (L.email) u.searchParams.set('prefilled_email', L.email);
-        location.href = u.toString();
-        return;
+        payUrl = u.toString();
       } catch(e){}
     }
+    var msg = waMsgOrdine(L, p, express, value, payUrl);
+    sendWebhook({evento: 'ordine', codice: L.id, nome: L.parentName, whatsapp: L.phone, email: L.email, pacchetto: p.name, canzoni: p.songs, consegna_48h: express, importo: value,
+      link_whatsapp: waLink(L.phone, msg), messaggio_whatsapp: msg});
+    if (payUrl) { location.href = payUrl; return; }
     $('#payMsg').innerHTML = '<div class="notice">✅ <b>Richiesta ricevuta!</b> Ti scriviamo entro 24 ore su WhatsApp al numero <b>' + esc(L.phone) + '</b> per completare l’ordine (' + esc(name) + ', ' + euro(value) + '). Codice: ' + esc(L.id) + '</div>' +
       (p.songs > 1 ? '<div class="ex-list" style="margin-top:14px"><p class="ns-note" style="margin:0">Intanto puoi raccontarci le altre canzoni (2 minuti ciascuna):</p>' + extraLinks(L.id, p.songs) + '</div>' : '');
   };

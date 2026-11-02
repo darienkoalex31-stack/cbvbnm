@@ -165,6 +165,7 @@ Si salvano nell'app (*Impostazioni → Strumenti per l'azienda → Risposte rapi
 
 | Scorciatoia | Quando |
 |---|---|
+| `/pagato` | Appena vedi il pagamento su Stripe (app o email): conferma alla mamma che è tutto a posto. |
 | `/testo` | Dopo il pagamento, entro 24 ore: prima incolla il testo della canzone in un messaggio, poi invia questa. |
 | `/promemoria` | Se dopo 24 ore non ha risposto sul testo. |
 | `/modifiche` | Quando chiede di cambiare qualcosa nel testo. |
@@ -174,7 +175,15 @@ Si salvano nell'app (*Impostazioni → Strumenti per l'azienda → Risposte rapi
 | `/ricontatto` | Una volta sola, 1–2 giorni dopo il primo messaggio, a chi non ha ordinato e non ha risposto. |
 | `/stop` | Quando scrive STOP: poi scrivi *STOP* nella colonna *Stato* del foglio e non riscriverle più. |
 
-Manca `/pagamento`: si scrive quando è deciso come si paga (finché Stripe non è collegato, la FAQ *Come pago?* del sito va aggiornata).
+Chi clicca *Ordina* ma non completa il pagamento: nel foglio, scheda *Ordini*, il link *Scrivi su WhatsApp* apre un messaggio di recupero con il suo link di pagamento personale. Mandalo qualche ora dopo, solo se su Stripe il pagamento non risulta.
+
+**/pagato**
+```
+Pagamento ricevuto, grazie! ✅
+Entro 24 ore ti mando qui il testo della canzone da leggere e approvare 🎵
+
+Se hai scelto 2 o 3 canzoni e non hai ancora raccontato le altre, puoi farlo dalla pagina che si è aperta dopo il pagamento, oppure scrivimi qui.
+```
 
 **/testo**
 ```
