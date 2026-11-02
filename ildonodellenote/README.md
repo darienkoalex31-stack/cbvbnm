@@ -23,7 +23,7 @@ Il traffico da Facebook è al 90% da telefono, freddo e distratto: la pagina dev
 1. **Titolo = offerta + risultato**: *"Regala a tuo figlio una canzone tutta sua, con il suo nome e la vostra storia"*.
 2. **Sottotitolo**: il problema (un regalo che non finisce in un cassetto) e come funziona in una riga.
 3. **Bottone** *"Crea la sua canzone →"* con *"Quiz di 2 minuti, gratis · Vedi il prezzo prima di decidere: da 25 €"*. Dire subito il prezzo di partenza toglie il dubbio "quanto mi costerà?" e porta al quiz persone già d'accordo sulla cifra.
-4. **Garanzia Emozione**: approvi il testo prima che diventi musica; se non ti emoziona la rifacciamo gratis e, se ancora non convince, rimborsiamo (regole complete in `termini.html`, punto 10).
+4. **Garanzia Pelle d’Oca**: approvi il testo prima che diventi musica; se la canzone non ti fa venire la pelle d’oca scrivi «rivoglio i soldi» entro 14 giorni e ti restituiamo tutto, più 5 €, senza domande. È la garanzia incondizionata con bonus di *$100M Offers* (cap. 15), con un nome che crea un'immagine e il motivo detto chiaro. Regole in `termini.html` punto 10, gestione dei rimborsi in `COLLEGAMENTI.md` sezione 6.
 5. **Card della canzone** (esempio illustrativo) o video.
 
 Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su telefono, dopo l'hero, lo stesso bottone resta in basso mentre si scorre e si ferma al suo posto in fondo alla pagina: è sempre a portata di pollice e non sparisce mai di colpo. Tutti i bottoni dicono la stessa cosa (*"Crea la sua canzone →"*). In fondo c'è il footer con contatti (WhatsApp ed email), pagamenti e dati dell'attività.
@@ -37,6 +37,7 @@ Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → t
 - Titolo B: *"Il regalo di Natale che tuo figlio non dimenticherà: una canzone scritta solo per lui"* (da usare fino a metà dicembre).
 - Titolo C: *"Il suo nome, la vostra storia, le tue parole. In una canzone."*
 - CTA B: *"Scopri come sarà la sua canzone →"*
+- **Nome della garanzia**: sul sito c'è *Garanzia Pelle d’Oca*. Le alternative *Garanzia Occhi Lucidi* e *Garanzia Brividi o Rimborso* si provano come titoli degli annunci (stesso annuncio, cambia solo il nome): vince quella con più clic e acquisti, e solo allora si porta sul sito. Sulla landing il traffico è troppo poco per un test A/B affidabile.
 
 ---
 
@@ -132,7 +133,7 @@ Una pagina di vendita singola si posiziona per poche ricerche. Per crescere su G
 ## 6. Da verificare prima di accendere le ads
 
 - [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
-- [x] **Condizioni della Garanzia Emozione** (rifacimento gratuito, poi rimborso): scritte in `termini.html`, punto 10.
+- [x] **Condizioni della Garanzia Pelle d’Oca** (rimborso senza domande entro 14 giorni + 5 €, una volta per cliente): scritte in `termini.html`, punto 10. Nei primi 20–30 ordini conta i rimborsi: oltre il 10% va migliorata la qualità delle canzoni.
 - [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. I **termini e condizioni** sono in `termini.html`: venditore e indirizzo inseriti; quando apri la partita IVA aggiungi il numero (termini punto 1, privacy punto 1, `legalInfo`) e il regime fiscale (termini punto 4), poi fai verificare termini e privacy da un professionista.
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
 - [x] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini** (fatto: meta-tag `facebook-domain-verification` in `index.html`, non toglierlo).

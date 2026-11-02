@@ -171,6 +171,8 @@ Si salvano nell'app (*Impostazioni → Strumenti per l'azienda → Risposte rapi
 | `/modifiche` | Quando chiede di cambiare qualcosa nel testo. |
 | `/approvato` | Quando risponde OK al testo. |
 | `/consegna` | Alla consegna: invia questa e subito dopo il file MP3. |
+| `/rimborso` | Quando scrive «rivoglio i soldi» (o che la canzone non l'ha emozionata): le fai scegliere tra rifacimento e rimborso, senza chiedere il motivo. |
+| `/rimborsato` | Dopo aver fatto il rimborso su Stripe e mandato i 5 €. |
 | `/reazione` | Qualche giorno dopo l'occasione del regalo. |
 | `/ricontatto` | Una volta sola, 1–2 giorni dopo il primo messaggio, a chi non ha ordinato e non ha risposto. |
 | `/stop` | Quando scrive STOP: poi scrivi *STOP* nella colonna *Stato* del foglio e non riscriverle più. |
@@ -220,7 +222,24 @@ Eccola! 🎁 La tua canzone è pronta: trovi qui sotto il file MP3.
 
 Un consiglio per il momento del regalo: fagliela ascoltare a sorpresa e tieni il telefono pronto per riprendere la reazione 💛
 
-Se non ti emoziona come speravi, dimmelo entro 7 giorni: con la Garanzia Emozione la rifacciamo gratis e, se ancora non ti convince, ti rimborsiamo.
+E ricorda la Garanzia Pelle d’Oca: se ascoltandola non ti viene la pelle d’oca, scrivimi «rivoglio i soldi» entro 14 giorni e ti restituisco tutto, più 5 €. Nessuna domanda.
+```
+
+**/rimborso**
+```
+Mi dispiace che la canzone non ti abbia emozionato 🙏 Nessun problema: la Garanzia Pelle d’Oca vale, e non devi spiegarmi niente.
+
+Scegli tu:
+1. Te la rifaccio gratis, cambiando musica, voce o testo come preferisci
+2. Ti restituisco i soldi, più i 5 € promessi
+
+Se scegli il rimborso, dimmi solo dove preferisci ricevere i 5 € in più: PayPal, Satispay o IBAN.
+```
+
+**/rimborsato**
+```
+Fatto ✅ Ti ho rimborsato sullo stesso metodo di pagamento: l'accredito arriva in pochi giorni, dipende dalla tua banca. Ti ho mandato anche i 5 € in più.
+Grazie comunque per averci dato fiducia 💛
 ```
 
 **/reazione**
@@ -241,3 +260,17 @@ Se hai dubbi su prezzo, tempi o come funziona, chiedimi pure: ti rispondo volent
 Ricevuto, non riceverai altri messaggi da noi 🙏
 Se un giorno vorrai regalare una canzone, ci trovi qui 💛
 ```
+
+---
+
+## 6. Garanzia Pelle d’Oca: come si gestisce un rimborso
+
+Regole complete in `termini.html`, punto 10: rimborso senza domande entro 14 giorni dalla consegna, più 5 €, una volta per cliente, solo per chi ha pagato.
+
+1. **Controlla nel foglio** (cerca il numero WhatsApp) che non abbia già usato la garanzia in un altro ordine e che siano passati al massimo 14 giorni dalla consegna.
+2. **Mandale `/rimborso`**: sceglie lei tra rifacimento e rimborso. Non chiedere il motivo; se te lo dice da sola, annotalo nel foglio, serve a migliorare le canzoni.
+3. **Rimborso su Stripe**: *Transazioni* → cerca l'email o il codice ordine → *Rimborsa*. Importo: per 1 canzone tutto; per i pacchetti il totale diviso per il numero di canzoni (tutto l'ordine se nessuna canzone l'ha emozionata). Motivo: *Richiesto dal cliente*. Stripe non restituisce la sua commissione.
+4. **I 5 € in più** (una volta per ordine) li mandi tu con PayPal, Satispay o bonifico: Stripe non può rimborsare più di quanto è stato pagato.
+5. **Mandale `/rimborsato`** e scrivi *Rimborsato* nella colonna *Pagato* della scheda *Ordini*.
+
+**Da tenere d'occhio:** conta i rimborsi nei primi 20–30 ordini. Se superano il 10%, il problema è la qualità delle canzoni, non la garanzia: riascolta le ultime consegne e cambia il modo di scrivere testo e stile. Ogni rifacimento consuma un download di Suno.
