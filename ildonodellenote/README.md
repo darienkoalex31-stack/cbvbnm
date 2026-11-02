@@ -133,7 +133,7 @@ Una pagina di vendita singola si posiziona per poche ricerche. Per crescere su G
 
 - [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
 - [x] **Condizioni della Garanzia Emozione** (rifacimento gratuito, poi rimborso): scritte in `termini.html`, punto 10.
-- [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. I **termini e condizioni** sono in `termini.html`: completa i dati del venditore (punto 1) e il regime fiscale (punto 4), poi falli verificare.
+- [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. I **termini e condizioni** sono in `termini.html`: venditore e indirizzo inseriti; quando apri la partita IVA aggiungi il numero (termini punto 1, privacy punto 1, `legalInfo`) e il regime fiscale (termini punto 4), poi fai verificare termini e privacy da un professionista.
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
 - [x] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini** (fatto: meta-tag `facebook-domain-verification` in `index.html`, non toglierlo).
 - [ ] **Dati dell'attività nel footer** (`legalInfo` in `config.js`): ragione sociale o nome e cognome e partita IVA sono obbligatori su un sito che vende.
