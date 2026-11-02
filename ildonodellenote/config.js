@@ -5,7 +5,7 @@
  */
 window.DDN_CONFIG = {
   // ID del Meta Pixel (Gestione Eventi di Facebook). Es. '123456789012345'
-  pixelId: '',
+  pixelId: '4438778956385371',
 
   // ID di misurazione Google Analytics 4. Es. 'G-XXXXXXXXXX'
   // Serve a misurare avvio quiz, abbandoni domanda per domanda, contatti e acquisti.
