@@ -182,7 +182,7 @@ Qui sopra trovi il testo della tua canzone 🎵
 Leggilo con calma, magari ad alta voce 💛
 
 • Se ti piace così, rispondi OK e passiamo alla musica.
-• Se vuoi cambiare qualcosa (una parola, un soprannome, un ricordo da aggiungere), scrivimi cosa e lo sistemo.
+• Se vuoi cambiare qualcosa (una parola, un soprannome, un ricordo da aggiungere), scrivimi tutto in un messaggio e lo sistemo: hai 2 giri di modifiche inclusi.
 
 Dimmi anche che voce preferisci: femminile, maschile o un duetto. Se non hai preferenze, scegliamo noi quella più adatta.
 ```
@@ -211,7 +211,7 @@ Eccola! 🎁 La tua canzone è pronta: trovi qui sotto il file MP3.
 
 Un consiglio per il momento del regalo: fagliela ascoltare a sorpresa e tieni il telefono pronto per riprendere la reazione 💛
 
-Se non ti emoziona come speravi, dimmelo: con la Garanzia Emozione la riscriviamo gratis, oppure ti rimborsiamo.
+Se non ti emoziona come speravi, dimmelo entro 7 giorni: con la Garanzia Emozione la rifacciamo gratis e, se ancora non ti convince, ti rimborsiamo.
 ```
 
 **/reazione**

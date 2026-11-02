@@ -23,7 +23,7 @@ Il traffico da Facebook è al 90% da telefono, freddo e distratto: la pagina dev
 1. **Titolo = offerta + risultato**: *"Regala a tuo figlio una canzone tutta sua, con il suo nome e la vostra storia"*.
 2. **Sottotitolo**: il problema (un regalo che non finisce in un cassetto) e come funziona in una riga.
 3. **Bottone** *"Crea la sua canzone →"* con *"Quiz di 2 minuti, gratis · Vedi il prezzo prima di decidere: da 25 €"*. Dire subito il prezzo di partenza toglie il dubbio "quanto mi costerà?" e porta al quiz persone già d'accordo sulla cifra.
-4. **Garanzia Emozione**: approvi il testo prima della registrazione; se non ti emoziona la riscriviamo gratis o rimborsiamo.
+4. **Garanzia Emozione**: approvi il testo prima che diventi musica; se non ti emoziona la rifacciamo gratis e, se ancora non convince, rimborsiamo (regole complete in `termini.html`, punto 10).
 5. **Card della canzone** (esempio illustrativo) o video.
 
 Sotto, in breve: **come funziona in 4 passi** (quiz → riepilogo e prezzo → testo su WhatsApp da approvare → canzone), **cosa entra nella canzone**, una frase emotiva, **6 domande frequenti** (prezzo, tempi, modifiche, voce, più figli, pagamento), bottone finale. Su telefono, dopo l'hero, lo stesso bottone resta in basso mentre si scorre e si ferma al suo posto in fondo alla pagina: è sempre a portata di pollice e non sparisce mai di colpo. Tutti i bottoni dicono la stessa cosa (*"Crea la sua canzone →"*). In fondo c'è il footer con contatti (WhatsApp ed email), pagamenti e dati dell'attività.
@@ -132,8 +132,8 @@ Una pagina di vendita singola si posiziona per poche ricerche. Per crescere su G
 ## 6. Da verificare prima di accendere le ads
 
 - [ ] **Tempi di consegna** (circa una settimana, 48 ore con la consegna prioritaria) e **scadenza di Natale** (15 dicembre, nella barra in alto e nelle FAQ): devono essere tempi che riesci davvero a rispettare.
-- [ ] **Condizioni della Garanzia Emozione** (riscrittura gratuita + rimborso): scrivile anche nei termini di vendita.
-- [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. Servono anche i **termini e condizioni di vendita** (diritto di recesso: per un prodotto personalizzato è escluso, ma va scritto).
+- [x] **Condizioni della Garanzia Emozione** (rifacimento gratuito, poi rimborso): scritte in `termini.html`, punto 10.
+- [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. I **termini e condizioni** sono in `termini.html`: completa i dati del venditore (punto 1) e il regime fiscale (punto 4), poi falli verificare.
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
 - [x] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini** (fatto: meta-tag `facebook-domain-verification` in `index.html`, non toglierlo).
 - [ ] **Dati dell'attività nel footer** (`legalInfo` in `config.js`): ragione sociale o nome e cognome e partita IVA sono obbligatori su un sito che vende.
