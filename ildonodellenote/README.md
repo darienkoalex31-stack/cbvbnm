@@ -135,6 +135,6 @@ Una pagina di vendita singola si posiziona per poche ricerche. Per crescere su G
 - [ ] **Condizioni della Garanzia Emozione** (riscrittura gratuita + rimborso): scrivile anche nei termini di vendita.
 - [ ] **Privacy**: completa `privacy.html` (titolare, P.IVA, fornitori) e falla verificare. Servono anche i **termini e condizioni di vendita** (diritto di recesso: per un prodotto personalizzato è escluso, ma va scritto).
 - [ ] **Recensioni**: la pagina non contiene testimonianze perché il business è nuovo. Appena hai le prime reazioni vere (video/messaggi WhatsApp con il permesso delle clienti), aggiungi una sezione recensioni: è la leva di conversione più forte dopo il video. Non usare recensioni inventate.
-- [ ] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini**.
+- [x] Verifica il dominio in **Meta Business → Sicurezza del brand → Domini** (fatto: meta-tag `facebook-domain-verification` in `index.html`, non toglierlo).
 - [ ] **Dati dell'attività nel footer** (`legalInfo` in `config.js`): ragione sociale o nome e cognome e partita IVA sono obbligatori su un sito che vende.
 - [ ] **Badge "Powered by Netlify"**: sul piano gratuito è nascosto con la regola CSS `#nl-badge-frame` in tutte le pagine (soluzione non ufficiale). Quando passi al piano a pagamento, spegnilo da *Project configuration → General → Powered by Netlify badge* e togli la regola dalle 4 pagine.
