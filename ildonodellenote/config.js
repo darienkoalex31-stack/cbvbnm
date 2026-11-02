@@ -30,12 +30,12 @@ window.DDN_CONFIG = {
   // Se per ora hai un solo link, mettilo in "uno": per le scelte senza link il sito
   // mostra "Richiesta ricevuta, ti scriviamo su WhatsApp" e chiudi l'ordine in chat.
   paymentLinks: {
-    uno: '',            // 1 canzone, 25 €
-    due: '',            // 2 canzoni, 35 €
-    tre: '',            // 3 canzoni, 49 €
-    uno_express: '',    // 1 canzone + 48 ore, 30 €
-    due_express: '',    // 2 canzoni + 48 ore, 40 €
-    tre_express: ''     // 3 canzoni + 48 ore, 54 €
+    uno: 'https://buy.stripe.com/fZueVf2yPf703KQ9jYaVa00',            // 1 canzone, 25 €
+    due: 'https://buy.stripe.com/00w7sNc9pe2W1CIfImaVa01',            // 2 canzoni, 35 €
+    tre: 'https://buy.stripe.com/eVq28tgpF0c6ftyao2aVa02',            // 3 canzoni, 49 €
+    uno_express: 'https://buy.stripe.com/7sY3cx0qH9MGchm1RwaVa03',    // 1 canzone + 48 ore, 30 €
+    due_express: 'https://buy.stripe.com/4gM00l7T9cYSa9edAeaVa04',    // 2 canzoni + 48 ore, 40 €
+    tre_express: 'https://buy.stripe.com/bJe5kF7T9aQK0yEbs6aVa05'     // 3 canzoni + 48 ore, 54 €
   },
 
   // Payment Link di PROVA (Stripe in modalità test, nessun addebito vero): il sito li usa solo se

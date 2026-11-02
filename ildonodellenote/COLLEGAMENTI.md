@@ -20,7 +20,7 @@ Il sito è statico, quindi **bastano i Payment Link**: niente server, niente chi
 ### Stato attuale
 
 - **Modalità prova (fatto):** nell'account Stripe *Sandbox di ildonodellenote* ci sono i 4 prodotti (1, 2, 3 canzoni e "Consegna prioritaria in 48 ore" da 5 € come seconda riga) e i 6 Payment Link di test, in `config.js` → `paymentLinksTest`. Il sito li usa **solo** aprendo `https://ildonodellenote.it/?prova=1`: niente banner cookie, niente eventi a Meta e Google, e dopo il pagamento si torna su `grazie.html?prova=1` (nessun Purchase registrato). Carta di prova `4242 4242 4242 4242`, scadenza futura, CVC qualsiasi.
-- **Modalità reale (da fare):** attivare l'account Stripe con i dati dell'attività, ricreare gli stessi prodotti e link in modalità reale con pagina di conferma `https://ildonodellenote.it/grazie.html` (senza `?prova=1`) e metterli in `paymentLinks`. Prima servono i termini e condizioni, da collegare al checkout.
+- **Modalità reale (attiva dal 2 novembre 2026):** account Stripe *ildonodellenote* con gli stessi 4 prodotti e 6 Payment Link in `config.js` → `paymentLinks`. Pagina di conferma `https://ildonodellenote.it/grazie.html`, codici promozionali ammessi e casella obbligatoria di accettazione dei termini (URL dei termini salvato in Stripe → Impostazioni → Attività → Dettagli dell'attività), con il consenso a iniziare subito e la presa d'atto dell'assenza di recesso.
 
 ### Cosa mi serve da te
 
