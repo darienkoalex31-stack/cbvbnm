@@ -1,8 +1,38 @@
 # $100M Leads — Alex Hormozi
 ### Appunti fedeli, capitolo per capitolo
 
-**Fonte:** la lettura completa del libro (audiolibro trascritto), incollata il 13/11/2026.
-**Cosa manca:** immagini, tabelle, i 3 template di landing page e i 3 script di esempio (chiamata, email, messaggio diretto) del capitolo sui contatti a freddo, perché la lettura non li legge.
+**Fonti:**
+- il **libro in PDF** (385 pagine, in 5 parti: `100M_Leads_1…5`), caricato il 13/11/2026: testo, immagini, tabelle e schemi;
+- la lettura completa dell'audiolibro, incollata lo stesso giorno.
+
+Il testo coincide quasi del tutto. Le cose che c'erano solo nel PDF sono in fondo, nella sezione **«Solo nel PDF»**.
+
+**Attenzione — gli script di esempio:** i 3 script per i contatti a freddo (chiamata, email, messaggio) **non sono nel libro**. Hormozi scrive di averli tolti per accorciarlo e li mette gratis su Acquisition.com/training/leads (Parte 3, p. 36). I 3 modelli di landing page invece ci sono (Parte 3, p. 62): li trovi in fondo.
+
+**Come leggere le pagine:** «Parte 3, p. 62» = file `100M_Leads_3.pdf`, pagina 62 del PDF.
+
+| Capitolo | Dove inizia |
+|---|---|
+| How I Got Here | Parte 1, p. 14 |
+| The Problem This Book Solves | Parte 1, p. 31 |
+| Leads Alone Aren't Enough | Parte 1, p. 40 |
+| Engage Your Leads (lead magnet) | Parte 1, p. 43 |
+| #1 Warm Outreach | Parte 2, p. 1 |
+| #2 Post Free Content I | Parte 2, p. 31 |
+| #2 Post Free Content II | Parte 2, p. 53 |
+| #3 Cold Outreach | Parte 3, p. 5 |
+| #4 Paid Ads I | Parte 3, p. 37 |
+| #4 Paid Ads II (Money Stuff) | Parte 3, p. 65 |
+| More Better New | Parte 3, p. 80 |
+| Section IV: Lead Getters | Parte 4, p. 1 |
+| #1 Customer Referrals | Parte 4, p. 9 |
+| #2 Employees | Parte 4, p. 38 |
+| #3 Agencies | Parte 4, p. 56 |
+| #4 Affiliates | Parte 5, p. 1 |
+| Section V / Advertising in Real Life | Parte 5, p. 37 / p. 44 |
+| The Roadmap | Parte 5, p. 54 |
+| A Decade in a Page | Parte 5, p. 61 |
+
 **Avvertenza:** qui c'è solo quello che dice il libro. Le applicazioni a Il Dono delle Note sono in **APPLICAZIONE.md**.
 
 ---
@@ -473,3 +503,50 @@ L'automazione non cambia la natura: un'email a 10.000 persone resta un 1:1 fatto
   7. (lo scriverà quando arriva al miliardo).
 - **La macchina da 100 milioni:** dai 5 ai 10 anni di lavoro.
 - **Il dado a molte facce.** «Se non smetti, non puoi perdere.» Più tiri, più verdi escono.
+
+---
+
+## Solo nel PDF (immagini, tabelle e schemi che la lettura non riporta)
+
+- **I 3 modelli di landing page (Parte 3, p. 62).** «Più è semplice, più è facile da testare. Concentrati su parole e immagine.» Sono 3 varianti della stessa pagina:
+  1. riga di richiamo «Attenzione [avatar]», titolo, sottotitolo, campo email, bottone di invio;
+  2. come la 1, più un'immagine dell'offerta sopra il campo email;
+  3. come la 2, più 3 punti elenco sotto il bottone.
+- **Il «Cosa–Chi–Quando» (Parte 3, p. 53).**
+
+  | Cosa: di più | Cosa: di meno | Chi | Quando |
+  |---|---|---|---|
+  | sogno | incubo | loro stessi | passato |
+  | veloce | lento | famiglia | presente |
+  | facile | difficile | amici | futuro |
+  | probabile | rischioso | colleghi | |
+  | | | rivali | |
+
+- **Acquisizione finanziata dal cliente (Parte 3, p. 74).** La tabella mese per mese.
+  - **Vecchio modo:** costo −30 $, +10 $ al mese. La cassa passa da −20 a −10, poi 0, poi positiva solo dal terzo mese.
+  - **Nuovo modo:** con l'upsell la cassa è in pari subito e poi cresce di 10 $ al mese.
+- **Le checklist giornaliere** (Parte 2, p. 26 e 72; Parte 3, p. 35 e 78; Parte 5, p. 51):
+
+  | Metodo | Volume | Promemoria / durata |
+  |---|---|---|
+  | **Contatti caldi** | 100 tentativi al giorno, primi 5 gratis, nelle prime 4 ore | 2 promemoria dopo il primo |
+  | **Contenuti** | 100 minuti al giorno, ogni mattina, 7 giorni su 7 | «dai finché chiedono» |
+  | **Contatti a freddo** | aggancio + lead magnet o offerta, 100 al giorno, 7 giorni su 7 | 2 volte il giorno 1, 2 volte il giorno 2, 1 volta il giorno 7 |
+  | **Pubblicità** | richiamo + 3W + CTA; 30+ richiami × 10 annunci | budget per imparare, poi budget calcolato sulle vendite |
+  | **Piano generale** | prime 8 ore, 100 azioni o fino all'obiettivo | 100 giorni o fino all'obiettivo |
+
+- **L'equazione della crescita col passaparola (Parte 4, p. 16):** % di clienti che portano un amico ogni mese − % di clienti persi ogni mese = crescita mensile.
+- **Prezzo, profitto e valore (Parte 4, p. 19):**
+  - valore = quello che ricevono;
+  - prezzo = quello che fai pagare;
+  - costo = quello che costa a te.
+- **I core four interni per trovare dipendenti (Parte 4, p. 46):**
+  - chiedere alla tua rete (caldo);
+  - recruiter (freddo);
+  - post di annunci di lavoro (contenuti);
+  - promuovere gli annunci di lavoro (pubblicità).
+
+  Più i lead getter: passaparola dei dipendenti, comunità, agenzie di selezione.
+- **Esempio Dropbox (Parte 4, p. 30):** «500 MB di spazio in più a te e al tuo amico, fino a 16 GB».
+- **I test sul titolo del libro (Parte 1, p. 59–62).** Sondaggi su X: «promotion» contro «advertising», «leads» contro «advertising», e così via. Ha vinto «How to get strangers to want to buy your stuff».
+- **I «Free Gift».** Video, script e checklist gratuiti su Acquisition.com/training/leads. Non sono nel libro.

@@ -1,8 +1,34 @@
 # $100M Offers — Alex Hormozi
 ### Appunti fedeli, capitolo per capitolo
 
-**Fonte:** la lettura completa del libro (audiolibro trascritto), incollata il 13/11/2026.
-**Cosa manca:** le immagini, le tabelle e i grafici del libro.
+**Fonti:**
+- il **libro in PDF** (205 pagine, in 3 parti: `100M_Offers_1/2/3`), caricato il 13/11/2026: testo, immagini, tabelle e schemi;
+- la lettura completa dell'audiolibro, incollata lo stesso giorno.
+
+Il testo del PDF e quello letto ad alta voce coincidono quasi del tutto. Le cose che c'erano solo nel PDF sono in fondo, nella sezione **«Solo nel PDF»**.
+
+**Come leggere le pagine:** «Parte 1, p. 61» = file `100M_Offers_1.pdf`, pagina 61 del PDF.
+
+| Capitolo | Dove inizia |
+|---|---|
+| 1 How We Got Here | Parte 1, p. 13 |
+| 2 Grand Slam Offers | Parte 1, p. 25 |
+| 3 Commodity Problem | Parte 1, p. 38 |
+| 4 Finding the Right Market | Parte 1, p. 48 |
+| 5 Charge What It's Worth | Parte 1, p. 61 |
+| 6 Value Equation | Parte 1, p. 78 |
+| 7 Free Goodwill | Parte 1, p. 94 |
+| 8 Thought Process | Parte 2, p. 1 |
+| 9 Problems & Solutions | Parte 2, p. 7 |
+| 10 Trim & Stack | Parte 2, p. 17 |
+| 11 Enhancing the Offer | Parte 2, p. 36 |
+| 12 Scarcity | Parte 2, p. 46 |
+| 13 Urgency | Parte 2, p. 56 |
+| 14 Bonuses | Parte 2, p. 63 |
+| 15 Guarantees | Parte 2, p. 73 |
+| 16 Naming | Parte 3, p. 2 |
+| Your First $100,000 | Parte 3, p. 16 |
+
 **Avvertenza:** qui c'è solo quello che dice il libro. Dove applico il libro a Il Dono delle Note lo scrivo in **APPLICAZIONE.md**, mai qui.
 
 ---
@@ -326,3 +352,48 @@
   - Impila il valore.
   - Usa scarsità, urgenza, bonus, garanzia e nome.
 - **Una vera grand slam offer dovrebbe portarti ai primi 100.000 $.** Il libro successivo, $100M Leads, spiega come trovare i clienti.
+
+---
+
+## Solo nel PDF (immagini, tabelle e schemi che la lettura non riporta)
+
+- **Tabella commodity contro grand slam (Parte 1, p. 44–46).** Stessi soldi in pubblicità e stessa copertura, ma:
+  - risposta all'annuncio **2,5 volte**;
+  - chiusure **2,3 volte**;
+  - prezzo **4 volte** (pagamento unico al posto del canone mensile);
+
+  **22,4 volte la cassa** incassata subito. «Vieni pagato per acquisire clienti.»
+- **Circolo virtuoso o vizioso del prezzo (Parte 1, p. 68).** Lo schema completo:
+
+  | Se abbassi il prezzo, per i clienti | Se lo alzi |
+  |---|---|
+  | meno investimento emotivo | più investimento emotivo |
+  | meno valore percepito | più valore percepito |
+  | risultati peggiori | risultati migliori |
+  | clienti più esigenti | clienti meno esigenti |
+  | meno ricavo per erogare il servizio | più ricavo per erogare il servizio |
+
+  | Se abbassi il prezzo, per l'azienda | Se lo alzi |
+  |---|---|
+  | meno profitto | più profitto |
+  | meno stima di sé | più stima di sé |
+  | meno percezione del proprio impatto | più percezione del proprio impatto |
+  | servizio peggiore | servizio migliore |
+  | venditori meno convinti | venditori più convinti |
+
+- **Tabella sforzo: fitness contro liposuzione (Parte 1, p. 90)** e **tabella meditazione contro Xanax (Parte 1, p. 92):** sono le stesse voci del capitolo 6, messe in colonna.
+- **Il «Delivery Cube» (Parte 2, p. 23).** I modi per consegnare la soluzione:
+  - attenzione: 1:1, piccolo gruppo, 1:molti;
+  - sforzo del cliente: fai da te, fatto insieme, fatto per te;
+  - mezzo e formato di consumo;
+  - velocità e comodità;
+  - test 10 volte e 1/10 del prezzo.
+- **«Splinter stack» (Parte 2, p. 63).** Il servizio intero (un cubo unico) si spezza in pezzi che diventano **bonus**:
+  - (A) prodotti;
+  - (B) servizi;
+  - (C) il **prossimo bisogno logico** del cliente.
+
+  Separati e presentati uno per uno, valgono più del cubo intero.
+- **Formula M-A-G-I-C (Parte 3, p. 4):** Magnet (motivo), Avatar, Goal (obiettivo), Interval (durata), Container (parola contenitore). Le stesse voci del capitolo 16.
+- **Le promozioni stagionali con nome e data (Parte 2, p. 58–59):** «New Year Promotion ends Jan 30», «Valentines Lovers Promo», «Sexy By Spring», «Fools in Love April Promo».
+- **I «Free Gift» n. 1–10.** Video e checklist gratuiti su Acquisition.com/training/offers. Non sono nel libro.
