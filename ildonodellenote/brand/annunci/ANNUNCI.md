@@ -249,3 +249,38 @@ E se non ti viene la pelle d’oca, ti rimborsiamo più 5 €.
 8. ✏️ Se dopo 5 giorni non c'è **nessun acquisto**, cambia l'evento di conversione da **Acquisto** a **Lead** (chi lascia il WhatsApp nel quiz): Meta impara più in fretta.
 
 **Obiettivo di costo:** ✏️ massimo 15 € per ordine. 📖 L'ideale secondo Hormozi è 3 volte meno del guadagno, cioè circa 9 €. Fino a circa 28 € per ordine sei ancora in pari.
+
+---
+
+# Versione 2 (13/11/2026): rifatta secondo i libri
+
+Il perché di ogni scelta è in `ANALISI-ANNUNCI.md`.
+
+📖 Libri: 50 hook × 3–5 corpi × 1–3 CTA (GOATed Ads p. 5); l'offerta va mostrata solo a chi conosce già il prodotto (GOATed Ads p. 10).
+
+## Gruppo A: pubblico freddo, 18 annunci nuovi
+Le immagini sono nella cartella `v2/`. Il nome dell'annuncio è quello del file, per esempio `v2-ricordo-b`. **Non c'è più il prezzo nelle immagini.**
+
+Il testo principale è uguale per i 3 hook dello stesso corpo, ma **la prima riga è l'hook dell'immagine** (📖 Hooks p. 3: l'hook è la prima cosa che si vede o si sente).
+
+**CTA** (📖 GOATed Ads p. 21: cosa, come, quando, cosa ottieni, cosa succede dopo), in fondo a ogni testo:
+> 👉 Tocca «Scopri di più» e fai il quiz gratis: in 2 minuti vedi il titolo della sua canzone. Se ti piace, la ordini; entro 24 ore ti scriviamo su WhatsApp con il testo da approvare. Per Natale, entro il 15 dicembre.
+
+| Corpo | Prima riga del testo (una per variante a / b / c) | Resto del testo | Titolo | Descrizione |
+|---|---|---|---|---|
+| **ricordo** | a) Ti ricordi cosa ti hanno regalato a 6 anni? · b) Tra vent'anni ricorderà un solo regalo di quest'anno. · c) Quanti regali dell'anno scorso usa ancora tuo figlio? | Una canzone con il suo nome, le sue passioni e le parole che vuoi dirgli. Il testo lo approvi tu su WhatsApp, prima che diventi musica. 🛡️ Garanzia Pelle d'Oca: se non ti emoziona, ti rimborsiamo + 5 €. | Un regalo che ricorderà da grande | Quiz gratis · 2 minuti |
+| **dimenticati** | a) 3 regali che a gennaio avrà già dimenticato. · b) Mamme, quest'anno niente regali da cassetto. · c) Ha già tutto? Regalagli una cosa che non esiste ancora. | Il giocattolo, il vestito, il buono regalo… a gennaio sono già dimenticati. Una canzone con il suo nome no. 🛡️ Garanzia Pelle d'Oca. | Il regalo che non si dimentica | Quiz gratis · 2 minuti |
+| **senza** | a) Come regalargli una canzone tutta sua, anche se non sai né scrivere né cantare. · b) Una canzone con il suo nome, in 3 passi, da casa. · c) Il modo più semplice per regalargli una canzone tutta sua. | 1) Rispondi a 10 domande su di lui. 2) Approvi il testo su WhatsApp. 3) Ricevi la canzone. Testo e musica li creiamo noi, con l'aiuto dell'intelligenza artificiale. 🛡️ Garanzia Pelle d'Oca. | Una canzone tutta sua, senza fatica | Quiz gratis · 2 minuti |
+| **natale** | a) Il regalo di Natale che non finisce in un cassetto. · b) Quest'anno sotto l'albero, il suo nome in una canzone. · c) Mamme, il regalo di Natale si prenota entro il 15/12. | Una canzone scritta solo per tuo figlio, con il suo nome e i vostri ricordi. 📅 Per riceverla in tempo, ordina entro il 15 dicembre. 🛡️ Garanzia Pelle d'Oca. | Il regalo di Natale che resta | Ordina entro il 15 dicembre |
+| **48ore** | a) Compleanno tra pochi giorni? La sua canzone in 48 ore. · b) Regalo dell'ultimo minuto? Che sembri pensato da mesi. · c) Festa in arrivo e ancora niente regalo? Ce la facciamo. | Il testo arriva su WhatsApp entro 24 ore dall'ordine. Con la consegna prioritaria la canzone è pronta entro 48 ore da quando approvi il testo. 🛡️ Garanzia Pelle d'Oca. | La sua canzone in 48 ore | Consegna prioritaria |
+| **titolo** | a) Scopri gratis il titolo della canzone di tuo figlio. · b) Mamme, ho un regalo per voi 🎁 · c) Come si chiamerebbe la canzone di tuo figlio? | Rispondi a 10 domande su di lui, lascia il tuo WhatsApp e vedi subito il titolo della sua canzone. Gratis e senza impegno. Se ti piace, la scriviamo davvero. | Scopri il titolo gratis | Gratis · 2 minuti |
+
+## Gruppo B: chi ha già visitato il sito (5 annunci della prima versione)
+`whatsapp`, `garanzia`, `caso-peggiore`, `25euro`, `fratelli`. Testi e immagini restano quelli della prima versione, più sopra.
+
+- 📖 Sono annunci sull'offerta: vanno mostrati a chi conosce già il prodotto (GOATed Ads p. 8–10). Il libro dice che la lista di chi ha mostrato interesse senza comprare «tornerà utile» (Leads, Paid Ads I).
+- ✏️ In Meta: crea un gruppo di inserzioni con un **pubblico personalizzato** di chi ha visitato il sito negli ultimi 14 giorni ed escludi chi ha comprato. È un'impostazione di Meta: il libro non ne parla.
+- ⚠️ `25euro` e `fratelli` hanno il prezzo nell'immagine: vanno rifatti se il prezzo cambia.
+
+## In pausa
+`numeri` ed `errori`: `errori` è un doppione di `dimenticati`. `nome` resta come annuncio di riferimento, ma solo nel gruppo A.

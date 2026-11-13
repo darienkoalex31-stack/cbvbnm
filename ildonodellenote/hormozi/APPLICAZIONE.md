@@ -65,3 +65,11 @@
 - **Se i libri non ne parlano**, per esempio i pulsanti di Meta, Stripe o Netlify, lo dico chiaramente.
 - **Le aggiunte mie** le segno sempre come tali (✏️).
 - **Quello che manca nella trascrizione** (immagini, tabelle, i 3 script di esempio e i template di landing page di $100M Leads) **non lo invento**: si recupera solo dal libro vero.
+
+---
+
+## 5. Aggiornamento del 13/11/2026 (dopo i PDF e i due playbook)
+- **Studio sui conti:** `../STUDIO-ROI.md`. Secondo i libri il guadagno per cliente (≈ 28 €) è troppo basso per la sola pubblicità: per stare a 3 a 1 servono meno di 9,4 € per cliente.
+- **Analisi degli annunci:** `../brand/annunci/ANALISI-ANNUNCI.md`. Un solo formato, pochi hook, troppi annunci sull'offerta per il pubblico freddo, CTA incompleta, nessuna prova.
+- **Annunci nuovi:** `../brand/annunci/v2/`, 18 per il pubblico freddo senza prezzo. I 5 annunci sull'offerta passano a chi ha già visitato il sito.
+- **Correzione:** i 3 script per i contatti a freddo non sono nel libro (Leads, Parte 3 p. 36): non vanno cercati né inventati.
