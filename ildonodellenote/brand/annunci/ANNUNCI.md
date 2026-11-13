@@ -234,16 +234,18 @@ E se non ti viene la pelle d’oca, ti rimborsiamo più 5 €.
 
 ## Come caricarli (semplice)
 
-1. **1 campagna**, obiettivo **Vendite**, evento di conversione **Acquisto**.
-2. **1 gruppo di inserzioni**: Italia, donne e uomini 25–55 anni, pubblico Advantage+ (lascia fare a Meta), posizionamenti Advantage+.
-3. **Budget: almeno 20 € al giorno.** Con 15 annunci e 10 € al giorno, Meta spende quasi tutto su 2–3 annunci e gli altri non vengono mai provati.
-4. **Dentro il gruppo, i 15 annunci**: per ognuno carichi le 2 immagini (post per il Feed, storia per Storie e Reels), testo, titolo, descrizione e i parametri URL.
-5. **Budget per imparare (Hormozi: «prima si perde, poi si stampa»).** Decidi prima quanto puoi permetterti di perdere il primo mese per imparare (es. 300–400 €). All'inizio è normale perdere.
-6. **Regole per spegnere** (Hormozi: 1 volta e 2 volte l'incasso di un cliente, circa 30 €):
+📖 = dal libro $100M Leads · ✏️ = mia scelta o pratica di Meta, **non** dal libro (vedi `hormozi/APPLICAZIONE.md`).
+
+1. ✏️ **1 campagna**, obiettivo **Vendite**, evento di conversione **Acquisto**.
+2. ✏️ **1 gruppo di inserzioni**: Italia, donne e uomini 25–55 anni, pubblico Advantage+ (lascia fare a Meta), posizionamenti Advantage+.
+3. ✏️ **Budget: almeno 20 € al giorno.** Con 15 annunci e 10 € al giorno, Meta spende quasi tutto su 2–3 annunci e gli altri non vengono mai provati.
+4. **Dentro il gruppo, i 15 annunci** (📖 lo 0,1% migliore degli inserzionisti testa 11 volte più creatività): per ognuno carichi le 2 immagini (post per il Feed, storia per Storie e Reels), testo, titolo, descrizione e i parametri URL.
+5. 📖 **Budget per imparare («prima si perde, poi si stampa»).** Decidi prima quanto puoi permetterti di perdere il primo mese per imparare (la cifra, es. 300–400 €, è ✏️). All'inizio è normale perdere.
+6. 📖 **Regole per spegnere** (1 volta e 2 volte l'incasso di un cliente, circa 30 €):
    - un annuncio spende **30 € senza nessun contatto** (nessuno lascia il WhatsApp) → spegnilo;
    - un annuncio spende **60 € senza nessuna vendita** → spegnilo;
-   - un annuncio porta vendite a **meno di 15 € l'una** → tienilo e alza il budget del 20% ogni 3–4 giorni.
-7. **Un test a settimana.** Ogni lunedì spegni i perdenti e sostituiscili con una variante del migliore (stessa immagine, titolo diverso). Scrivi ogni test in un foglio, così non riparti da zero.
-8. Se dopo 5 giorni non c'è **nessun acquisto**, cambia l'evento di conversione da **Acquisto** a **Lead** (chi lascia il WhatsApp nel quiz): Meta impara più in fretta.
+   - ✏️ un annuncio porta vendite a **meno di 15 € l'una** → tienilo e alza il budget del 20% ogni 3–4 giorni. (📖 Il libro dice: quando gli annunci sono in pari o meglio, decidi il budget partendo dai clienti che vuoi × il costo per cliente, + 20%.)
+7. 📖 **Un test a settimana.** Ogni lunedì spegni i perdenti e sostituiscili con una variante del migliore (stessa immagine, titolo diverso). Scrivi ogni test in un foglio, così non riparti da zero.
+8. ✏️ Se dopo 5 giorni non c'è **nessun acquisto**, cambia l'evento di conversione da **Acquisto** a **Lead** (chi lascia il WhatsApp nel quiz): Meta impara più in fretta.
 
-**Obiettivo di costo:** massimo 15 € per ordine. L'ideale secondo Hormozi è 3 volte meno del guadagno, cioè circa 9 €. Fino a circa 28 € per ordine sei ancora in pari.
+**Obiettivo di costo:** ✏️ massimo 15 € per ordine. 📖 L'ideale secondo Hormozi è 3 volte meno del guadagno, cioè circa 9 €. Fino a circa 28 € per ordine sei ancora in pari.
