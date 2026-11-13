@@ -33,7 +33,7 @@ Messaggi da copiare su WhatsApp. Le parti tra [parentesi quadre] vanno cambiate 
 ⚠️ Il punto 3 deve essere un sì **scritto** su WhatsApp. Non pubblicare mai foto o video con il viso dei bambini.
 
 **Dopo la consegna** (chiedi «chi», non «se»):
-> Sono felicissima che vi sia piaciuta! Una domanda: chi altro conosci che vorrebbe una canzone così per il suo bimbo?
+> Che bello che vi sia piaciuta! Una domanda: chi altro conosci che vorrebbe una canzone così per il suo bimbo?
 
 ---
 

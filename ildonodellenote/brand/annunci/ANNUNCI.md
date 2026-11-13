@@ -238,7 +238,7 @@ E se non ti viene la pelle d’oca, ti rimborsiamo più 5 €.
 2. **1 gruppo di inserzioni**: Italia, donne e uomini 25–55 anni, pubblico Advantage+ (lascia fare a Meta), posizionamenti Advantage+.
 3. **Budget: almeno 20 € al giorno.** Con 15 annunci e 10 € al giorno, Meta spende quasi tutto su 2–3 annunci e gli altri non vengono mai provati.
 4. **Dentro il gruppo, i 15 annunci**: per ognuno carichi le 2 immagini (post per il Feed, storia per Storie e Reels), testo, titolo, descrizione e i parametri URL.
-5. **Budget per imparare (Hormozi: «prima si perde, poi si stampa»).** Decidi prima quanto sei disposta a perdere il primo mese per imparare (es. 300–400 €). All'inizio è normale perdere.
+5. **Budget per imparare (Hormozi: «prima si perde, poi si stampa»).** Decidi prima quanto puoi permetterti di perdere il primo mese per imparare (es. 300–400 €). All'inizio è normale perdere.
 6. **Regole per spegnere** (Hormozi: 1 volta e 2 volte l'incasso di un cliente, circa 30 €):
    - un annuncio spende **30 € senza nessun contatto** (nessuno lascia il WhatsApp) → spegnilo;
    - un annuncio spende **60 € senza nessuna vendita** → spegnilo;
